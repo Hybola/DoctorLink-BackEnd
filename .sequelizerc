@@ -1,6 +1,10 @@
-const path = require("path");
+//file นี้เป็นการ config ให้เมื่อจะมีการสร้าง folder models ก็จะไปสร้างภายใน src แทนที่จะไปสร้าง auto ใน root folder
+//โดยการบอกให้ไปอ่านคำสั่งใน "src/config", "database.js"
+//แล้วบอกให้สร้าง models ภายใน src
+
+const path = require('path')
 
 module.exports = {
-  config: path.resolve("src/config", "database.js"),
-  "models-path": path.resolve("src", "models"),
-};
+    config: path.resolve('src/config', 'database.js'), //บอกให้ไปอ่านคำสั่งใน "src/config", "database.js"
+    'models-path': path.resolve('src', 'models'), //แล้วบอกให้สร้าง models ภายใน src
+}

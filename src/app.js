@@ -30,7 +30,9 @@ app.use(helmet());
 app.use(express.json());
 
 app.use("/auth", authRoute);
-
+// app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
+//app.use("/providerprofile", authenticate, providerRoute) //feature provider
+//app.use("post",authenticate,postRoute) //feature post
 
 
 app.use(notFoundMiddleware);
