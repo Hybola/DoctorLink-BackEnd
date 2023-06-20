@@ -2,7 +2,8 @@ const Joi = require('joi')
 const validate = require('./validate')
 
 const registerSchema = Joi.object({
-    username: Joi.string().trim().required(),
+    firstName: Joi.string().trim().required(),
+    lastName: Joi.string().trim().required(),
     email: Joi.string().email({ tlds: false }),
     password: Joi.string()
         .pattern(/^[a-zA-Z0-9]{6,30}$/)
@@ -13,6 +14,7 @@ const registerSchema = Joi.object({
         .trim()
         .required()
         .strip(),
+    mobile: Joi.string().pattern(/^[0-9]{10}$/),
 })
 
 const loginSchema = Joi.object({
