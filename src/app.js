@@ -5,13 +5,14 @@ const morgan = require("morgan"); //จะคอยบอกว่า request �
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
-const authRoute = require("./routes/auth-route");
-// const profileRoute=require("./routes/menu-route")
+const providerRoute = require("./routes/provider-route");
+const doctorRoute = require('./routes/doctor-route')
 
 
 const notFoundMiddleware = require("./middlewares/not-found.js");
 const errorMiddleware = require("./middlewares/error");
-// const authenticate = require("./middlewares/authenticate");
+// const authDoctorMiddleware = require("./middlewares/doctor-authenticate");
+// const authProviderMiddleware = require('./middlewares/provider-authenticate')
 
 const app = express();
 app.use(cors());
@@ -29,7 +30,8 @@ app.use(
 app.use(helmet());
 app.use(express.json());
 
-app.use("/auth", authRoute);
+app.use("/provider", providerRoute);
+app.use("/doctor", doctorRoute)
 // app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
 //app.use("/providerprofile", authenticate, providerRoute) //feature provider
 //app.use("post",authenticate,postRoute) //feature post
