@@ -10,9 +10,7 @@ const {
 exports.register = async (req, res, next) => {
     try {
         const value = validateRegister(req.body)
-        const isUserExist = await providerService.checkEmailExist(
-            value.email
-        )
+        const isUserExist = await providerService.checkEmailExist(value.email)
         if (isUserExist) {
             createError('Email address already have', 400)
         }
@@ -21,7 +19,7 @@ exports.register = async (req, res, next) => {
 
         const user = await providerService.createUser(value)
 
-        const accessToken = tokenService.sign({ id: user.id })
+        const accessToken = tokenService.sign({ id: user.id, role: 'provider' })
         res.status(200).json({ accessToken })
     } catch (err) {
         next(err)
@@ -31,9 +29,7 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const value = validateLogin(req.body)
-        const user = await providerService.getUserByEmail(
-            value.email
-        )
+        const user = await providerService.getUserByEmail(value.email)
         if (!user) {
             createError('invalid credential', 400)
         }
@@ -46,7 +42,7 @@ exports.login = async (req, res, next) => {
             createError('invalid credential', 400)
         }
 
-        const accessToken = tokenService.sign({ id: user.id })
+        const accessToken = tokenService.sign({ id: user.id, role: 'provider' })
         res.status(200).json({ accessToken })
     } catch (err) {
         next(err)
