@@ -18,12 +18,13 @@ module.exports = async (req, res, next) => {
         const payload = tokenService.verify(token)
         if (payload.role == 'doctor') {
             const user = await doctorSevice.getUserById(payload.id)
+            if (!user) createError('Unauthorized', 401)
+            req.user = user
         } else if (payload.role == 'provider') {
-            const user = await providerService.getUserById(payload.id);
+            const user = await providerService.getUserById(payload.id)
+            if (!user) createError('Unauthorized', 401)
+            req.user = user
         }
-
-        if (!user) createError('Unauthorized', 401)
-        req.user = user
         next()
     } catch (err) {
         next(err)
