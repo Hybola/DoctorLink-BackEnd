@@ -41,5 +41,21 @@ module.exports = (sequelize, DataTypes) => {
             underscored: true,
         }
     )
+    Doctor.associate = (models) => {
+        Doctor.hasMany(models.DoctorInterestedJob, {
+            foreignKey: {
+                name: 'doctor_id',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+        Doctor.hasMany(models.DoctorFollowProvider, {
+            foreignKey: {
+                name: 'doctor_id',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+    }
     return Doctor
 }
