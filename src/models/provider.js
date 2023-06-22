@@ -2,20 +2,6 @@ module.exports = (sequelize, DataTypes) => {
     const Provider = sequelize.define(
         'Provider',
         {
-            firstName: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
-            },
-            lastName: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
-            },
             email: {
                 type: DataTypes.STRING,
                 unique: true,
@@ -41,13 +27,6 @@ module.exports = (sequelize, DataTypes) => {
                     is: /^[0-9]{10}$/,
                 },
             },
-            lineId: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
-            },
             profileImage: DataTypes.STRING,
             coverImage: DataTypes.STRING,
         },
@@ -55,5 +34,22 @@ module.exports = (sequelize, DataTypes) => {
             underscored: true,
         }
     )
+    Provider.associate = (models) => {
+        Provider.hasMany(models.Post, {
+            foreignKey: {
+                name: 'providerId',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+
+        Provider.hasMany(models.DoctorFollowProvider, {
+            foreignKey: {
+                name: 'providerId',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+    }
     return Provider
 }

@@ -1,7 +1,8 @@
 const createError = require('../utils/create-error')
 const tokenService = require('../services/token-service')
 
-const providerSevice = require("../services/provider-service");
+const doctorSevice = require('../services/doctor-service')
+const providerService = require('../services/provider-service')
 
 module.exports = async (req, res, next) => {
     try {
@@ -15,10 +16,15 @@ module.exports = async (req, res, next) => {
             createError('Unauthorized', 401)
         }
         const payload = tokenService.verify(token)
-        
-        const user = await providerSevice.getUserById(payload.id);
-        if (!user) createError("Unauthorized", 401);
-        req.user = user;
+        if (payload.role == 'doctor') {
+            const user = await doctorSevice.getUserById(payload.id)
+            if (!user) createError('Unauthorized', 401)
+            req.user = user
+        } else if (payload.role == 'provider') {
+            const user = await providerService.getUserById(payload.id)
+            if (!user) createError('Unauthorized', 401)
+            req.user = user
+        }
         next()
     } catch (err) {
         next(err)
