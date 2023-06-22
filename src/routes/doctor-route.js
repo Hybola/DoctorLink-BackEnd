@@ -1,10 +1,10 @@
 const express = require('express')
 const authDoctorController = require('../controllers/authDoctor-controller')
 const router = express.Router()
-const authDoctorMiddleware = require('../middlewares/doctor-authenticate')
+const authenticate = require('../middlewares/authenticate')
 
 router.post('/register', authDoctorController.register)
 router.post('/login', authDoctorController.login)
-router.get('/me', authDoctorMiddleware, authDoctorController.getMe)
+router.get('/me', authenticate, authDoctorController.getMe)
 
 module.exports = router

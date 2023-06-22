@@ -30,8 +30,8 @@ app.use(
 app.use(helmet())
 app.use(express.json())
 
-app.use('/provider', providerRoute)
-app.use('/doctor', doctorRoute)
+app.use('/auth/provider', providerRoute)
+app.use('/auth/doctor', doctorRoute)
 // app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
 //app.use("/providerprofile", authenticate, providerRoute) //feature provider
 app.use('/post', postRoute) //feature post
