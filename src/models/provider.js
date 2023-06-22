@@ -34,5 +34,22 @@ module.exports = (sequelize, DataTypes) => {
             underscored: true,
         }
     )
+    Provider.associate = (models) => {
+        Provider.hasMany(models.Post, {
+            foreignKey: {
+                name: 'providerId',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+
+        Provider.hasMany(models.DoctorFollowProvider, {
+            foreignKey: {
+                name: 'providerId',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+    }
     return Provider
 }
