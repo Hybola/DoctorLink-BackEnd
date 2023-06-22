@@ -1,76 +1,68 @@
 module.exports = (sequelize, DataTypes) => {
-    const Provider = sequelize.define(
-        'Provider',
+    const FullTime = sequelize.define(
+        'FullTime',
         {
-            firstName: {
+            jobDes: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            lastName: {
+            workingDay: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            email: {
-                type: DataTypes.STRING,
-                unique: true,
+            startDate: {
+                type: DataTypes.DATEONLY,
+                allowNull: false,
                 validate: {
-                    isEmail: true,
+                    notEmpty: true,
                 },
             },
-            password: {
-                type: DataTypes.STRING,
+            salary: {
+                type: DataTypes.DECIMAL,
                 allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
             },
-            healthProviderName: {
+            annual: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            mobile: {
-                type: DataTypes.STRING,
-                unique: true,
-                validate: {
-                    is: /^[0-9]{10}$/,
-                },
-            },
-            lineId: {
+            benefit: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            profileImage: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            other: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
         },
         {
             underscored: true,
         }
     )
-    Provider.associate = (models) => {
-        Provider.hasMany(models.Post, {
+    FullTime.associate = (models) => {
+        FullTime.belongsTo(models.Post, {
             foreignKey: {
-                name: 'providerId',
+                name: 'postId',
                 allowNull: false,
             },
-            onDelete: 'RESTRICT',
-        })
-
-        Provider.hasMany(models.DoctorFollowProvider, {
-            foreignKey: {
-                name: 'providerId',
-                allowNull: false,
-            },
-            onDelete: 'RESTRICT',
         })
     }
-    return Provider
+    return FullTime
 }

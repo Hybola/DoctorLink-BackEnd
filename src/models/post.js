@@ -1,76 +1,82 @@
 module.exports = (sequelize, DataTypes) => {
-    const Provider = sequelize.define(
-        'Provider',
+    const Post = sequelize.define(
+        'Post',
         {
-            firstName: {
+            title: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            lastName: {
+            location: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            email: {
-                type: DataTypes.STRING,
-                unique: true,
-                validate: {
-                    isEmail: true,
-                },
-            },
-            password: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            healthProviderName: {
+            map: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            mobile: {
-                type: DataTypes.STRING,
-                unique: true,
-                validate: {
-                    is: /^[0-9]{10}$/,
-                },
-            },
-            lineId: {
+            line: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            profileImage: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            jobType: {
+                type: DataTypes.ENUM('FullTime', 'PartTime'),
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
+            phone: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
         },
         {
             underscored: true,
         }
     )
-    Provider.associate = (models) => {
-        Provider.hasMany(models.Post, {
+    Post.associate = (models) => {
+        Post.hasMany(models.PartTime, {
             foreignKey: {
-                name: 'providerId',
+                name: 'postId',
                 allowNull: false,
             },
-            onDelete: 'RESTRICT',
         })
 
-        Provider.hasMany(models.DoctorFollowProvider, {
+        Post.hasMany(models.FullTime, {
+            foreignKey: {
+                name: 'postId',
+                allowNull: false,
+            },
+        })
+        Post.belongsTo(models.Provider, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
             },
-            onDelete: 'RESTRICT',
+            as: 'provider',
+        })
+        Post.hasMany(models.DoctorInterestedJob, {
+            foreignKey: {
+                name: 'postId',
+                allowNull: false,
+            },
         })
     }
-    return Provider
+
+    return Post
 }
