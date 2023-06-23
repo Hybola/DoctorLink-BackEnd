@@ -16,8 +16,12 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            ProfileName: {
+                type: DataTypes.STRING,
+            },
             email: {
                 type: DataTypes.STRING,
+                allowNull: false,
                 unique: true,
                 validate: {
                     isEmail: true,
@@ -35,23 +39,27 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
             profileImage: DataTypes.STRING,
+            licenceNumber: DataTypes.STRING,
+            thainationalId: DataTypes.STRING,
             coverImage: DataTypes.STRING,
+            description: DataTypes.STRING,
+            lindId: DataTypes.STRING,
         },
         {
             underscored: true,
         }
     )
     Doctor.associate = (models) => {
-        Doctor.hasMany(models.DoctorInterestedJob, {
+        Doctor.hasMany(models.SavedJob, {
             foreignKey: {
-                name: 'doctor_id',
+                name: 'doctorId',
                 allowNull: false,
             },
             onDelete: 'RESTRICT',
         })
-        Doctor.hasMany(models.DoctorFollowProvider, {
+        Doctor.hasMany(models.Follow, {
             foreignKey: {
-                name: 'doctor_id',
+                name: 'doctorId',
                 allowNull: false,
             },
             onDelete: 'RESTRICT',
