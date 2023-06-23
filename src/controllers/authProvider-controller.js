@@ -49,6 +49,23 @@ exports.login = async (req, res, next) => {
     }
 }
 
+
+// exports.verifyToken = async (token) => {
+//     console.log("Verify Token...");
+//     const res = await axios.get(
+//         "https://oauth2.googleapis.com/tokeninfo?id_token=" + token,
+//         {
+//             validateStatus: function (status) {
+//                 return status < 500;
+//             },
+//         }
+//     );
+//     return !!res.data.iss;
+// };
+
+
+
+
 exports.getMe = (req, res, next) => {
     res.status(200).json({ user: req.user })
 }
