@@ -13,7 +13,7 @@ const registerSchema = Joi.object({
         .required()
         .strip(),
     mobile: Joi.string().pattern(/^[0-9]{10}$/),
-    healthProviderName: Joi.string().trim().required(),
+    providerName: Joi.string(),
 })
 
 const loginSchema = Joi.object({

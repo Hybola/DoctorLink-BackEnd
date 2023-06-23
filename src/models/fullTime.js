@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const FullTime = sequelize.define(
-        'FullTime',
+    const Fulltime = sequelize.define(
+        'Fulltime',
         {
             jobDes: {
                 type: DataTypes.STRING,
@@ -56,13 +56,13 @@ module.exports = (sequelize, DataTypes) => {
             underscored: true,
         }
     )
-    FullTime.associate = (models) => {
-        FullTime.belongsTo(models.Post, {
+    Fulltime.associate = (models) => {
+        Fulltime.belongsTo(models.JobPost, {
             foreignKey: {
-                name: 'postId',
+                name: 'jobPostId',
                 allowNull: false,
             },
         })
     }
-    return FullTime
+    return Fulltime
 }
