@@ -66,14 +66,14 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'RESTRICT',
         })
 
-        JobPost.hasMany(models.Parttime, {
+        JobPost.hasMany(models.PartTime, {
             foreignKey: {
                 name: 'jobPostId',
                 allowNull: false,
             },
         })
 
-        JobPost.hasMany(models.Fulltime, {
+        JobPost.hasMany(models.FullTime, {
             foreignKey: {
                 name: 'jobPostId',
                 allowNull: false,
