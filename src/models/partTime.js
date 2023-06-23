@@ -43,9 +43,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     PartTime.associate = (models) => {
-        PartTime.belongsTo(models.Post, {
+        PartTime.belongsTo(models.JobPost, {
             foreignKey: {
-                name: 'postId',
+                name: 'jobPostId',
                 allowNull: false,
             },
         })
