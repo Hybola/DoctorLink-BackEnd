@@ -13,12 +13,8 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            healthProviderName: {
+            providerName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             mobile: {
                 type: DataTypes.STRING,
@@ -27,15 +23,26 @@ module.exports = (sequelize, DataTypes) => {
                     is: /^[0-9]{10}$/,
                 },
             },
+            description: DataTypes.STRING,
             profileImage: DataTypes.STRING,
             coverImage: DataTypes.STRING,
+            lineId: DataTypes.STRING,
+            googleMap: DataTypes.STRING,
+            address: DataTypes.STRING,
         },
         {
             underscored: true,
         }
     )
     Provider.associate = (models) => {
-        Provider.hasMany(models.Post, {
+        Provider.belongsTo(models.Province, {
+            foreignKey: {
+                name: 'provinceId',
+            },
+            onDelete: 'RESTRICT',
+        })
+
+        Provider.hasMany(models.JobPost, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
@@ -43,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'RESTRICT',
         })
 
-        Provider.hasMany(models.DoctorFollowProvider, {
+        Provider.hasMany(models.Follow, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
