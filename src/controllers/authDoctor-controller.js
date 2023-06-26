@@ -16,6 +16,7 @@ exports.register = async (req, res, next) => {
         }
 
         value.password = await bcryptService.hash(value.password)
+        value.profileName = value.firstName + '  ' + value.lastName
 
         const user = await doctorService.createUser(value)
 
