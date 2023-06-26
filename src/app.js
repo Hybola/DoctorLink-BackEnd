@@ -5,14 +5,11 @@ const morgan = require('morgan') //จะคอยบอกว่า request ส
 const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
 
-const providerRoute = require('./routes/provider-route')
-const doctorRoute = require('./routes/doctor-route')
+const authRoute = require('./routes/auth-route')
 const postRoute = require('./routes/post-route')
 
 const notFoundMiddleware = require('./middlewares/not-found.js')
 const errorMiddleware = require('./middlewares/error')
-// const authDoctorMiddleware = require("./middlewares/doctor-authenticate");
-// const authProviderMiddleware = require('./middlewares/provider-authenticate')
 
 const app = express()
 app.use(cors())
@@ -30,14 +27,13 @@ app.use(
 app.use(helmet())
 app.use(express.json())
 
-app.use('/auth/provider', providerRoute)
-app.use('/auth/doctor', doctorRoute)
-// app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
-//app.use("/providerprofile", authenticate, providerRoute) //feature provider
+app.use('/auth', authRoute)
 app.use('/post', postRoute) //feature post
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
+
+
 ////============ เปิดให้ Server run ==========////
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log('server running on port:' + port))

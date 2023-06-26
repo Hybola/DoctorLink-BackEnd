@@ -49,21 +49,29 @@ exports.login = async (req, res, next) => {
     }
 }
 
+exports.logingoogle = async (req, res, next) => {
+    try {
+        const value = req.body
 
-// exports.verifyToken = async (token) => {
-//     console.log("Verify Token...");
-//     const res = await axios.get(
-//         "https://oauth2.googleapis.com/tokeninfo?id_token=" + token,
-//         {
-//             validateStatus: function (status) {
-//                 return status < 500;
-//             },
-//         }
-//     );
-//     return !!res.data.iss;
-// };
+        const user = await providerService.getUserByEmail(value.email)
 
+        let userGoogle
+        
+        value.password = await bcryptService.hash(value.password)
 
+        if (!user) {
+            userGoogle = await providerService.createUser(value)
+        }
+
+        const accessToken = tokenService.sign({
+            id: userGoogle ? userGoogle.id : user.id,
+            role: 'provider',
+        })
+        res.status(200).json({ accessToken })
+    } catch (err) {
+        next(err)
+    }
+}
 
 
 exports.getMe = (req, res, next) => {
