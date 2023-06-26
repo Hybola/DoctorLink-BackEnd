@@ -16,7 +16,27 @@ exports.createpost = async (req, res, next) => {
     }
 }
 
-// exports.getallpost = (req, res, next) => {}
+exports.getAllPost = async (req, res, next) => {
+    try {
+        const allJobPost = await postService.getAllPost()
+        res.json(allJobPost)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.filterJob = async (req, res, next) => {
+    try {
+        const filterObject = req.body
+        console.log(filterObject)
+        const filterJob = await postService.filterJob(filterObject)
+        console.log(filterObject)
+        res.json(filterJob)
+    } catch (err) {
+        next(err)
+    }
+}
+
 // exports.getpostbyid = (req, res, next) => {}
 // exports.deletepost = (req, res, next) => {}
 // exports.editpost = (req, res, next) => {}
