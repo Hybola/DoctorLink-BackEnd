@@ -6,17 +6,13 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
 const http = require('http')
 
-// const providerRoute = require('./routes/provider-route')
-// const doctorRoute = require('./routes/doctor-route')
-const authRoute = require('./routes/auth-routes')
+const authRoute = require('./routes/auth-route')
 const postRoute = require('./routes/post-route')
 const followRoute = require('./routes/follow-route')
 const profileRoute = require('./routes/profile-route')
 
 const notFoundMiddleware = require('./middlewares/not-found.js')
 const errorMiddleware = require('./middlewares/error')
-
-// const authProviderMiddleware = require('./middlewares/provider-authenticate')
 
 const app = express()
 const server = http.createServer(app)
@@ -52,6 +48,8 @@ app.use('/post', postRoute) //feature post
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
+
+
 ////============ เปิดให้ Server run ==========////
 // const port = process.env.PORT || 8080
 // app.listen(port, () => console.log('server running on port:' + port))
