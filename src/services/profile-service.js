@@ -1,4 +1,5 @@
-const { Doctor, Provider, Province, Follow } = require('../models')
+const { Doctor, Provider, Province, Follow, Post } = require('../models')
+const { Op } = require('sequelize')
 
 exports.getDoctorProfileById = (id) =>
     Doctor.findOne({

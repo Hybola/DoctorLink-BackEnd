@@ -9,7 +9,8 @@ const rateLimit = require('express-rate-limit')
 // const doctorRoute = require('./routes/doctor-route')
 const authRoute = require('./routes/auth-routes')
 const postRoute = require('./routes/post-route')
-const profileRoutes = require('./routes/profile-routes')
+const followRoute = require('./routes/follow-route')
+const profileRoute = require('./routes/profile-route')
 
 const notFoundMiddleware = require('./middlewares/not-found.js')
 const errorMiddleware = require('./middlewares/error')
@@ -33,7 +34,8 @@ app.use(helmet())
 app.use(express.json())
 
 app.use('/auth', authRoute)
-app.use('/profile', profileRoutes)
+app.use('/profile', profileRoute)
+app.use('/follow', followRoute)
 app.use('/post', postRoute) //feature post
 
 app.use(notFoundMiddleware)

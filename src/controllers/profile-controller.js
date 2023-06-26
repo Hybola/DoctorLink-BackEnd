@@ -6,19 +6,15 @@ exports.editMyProfile = async (req, res, next) => {
     try {
         const { id, role } = req.user
         const payload = req.body
+        console.log(payload)
+
         if (role == 'doctor') {
-            const profile = await profileService.editDoctorProfileById(
-                payload,
-                id
-            )
-            res.json(profile)
+            const rs = await profileService.editDoctorProfileById(payload, id)
+            res.json(rs)
         }
         if (role == 'provider') {
-            const profile = await profileService.editProviderProfileById(
-                payload,
-                id
-            )
-            res.json(profile)
+            const rs = await profileService.editProviderProfileById(payload, id)
+            res.json(rs)
         }
     } catch (err) {
         next(err)
@@ -89,17 +85,4 @@ exports.getProviderProfileById = async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-}
-
-exports.saveImage = async (req, res, next) => {
-    try {
-        const { image } = req.body
-        if ((req.user.role = 'Doctor')) {
-            await profileService.editDoctorProfileById(image, req.user.id)
-        }
-
-        if ((req.user.role = 'Provider')) {
-            await profileService.editProviderProfileById(image, req.user.id)
-        }
-    } catch (err) {}
 }
