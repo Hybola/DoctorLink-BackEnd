@@ -1,6 +1,6 @@
 const { Server } = require('socket.io')
 const server = require('./app')
-// const chalk = require('chalk')
+const chalk = require('chalk')
 
 const io = new Server(server, {
     cors: {
@@ -11,23 +11,23 @@ const io = new Server(server, {
 let users = []
 let allMsg = {}
 //======== P'First
-// const onlineUser = {};
+const onlineUser = {}
 
-// io.use((socket, next) => {
-//   const userId = socket.handshake.auth.id;
+io.use((socket, next) => {
+    const userId = socket.handshake.auth.id
 
-//   console.log(socket.id);
-//   console.log(userId);
-//   if (!userId) {
-//     console.log(chalk.red("error connect"));
-//     return next(new Error("invalid username"));
-//   }
-//   socket.userId = userId;
-//   onlineUser[userId] = socket.id;
-//   console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`));
-//   console.log(chalk.greenBright(`User connected ${socket.id}`));
-//   next();
-// });
+    console.log(socket.id)
+    console.log(userId)
+    if (!userId) {
+        console.log(chalk.red('error connect'))
+        return next(new Error('invalid username'))
+    }
+    socket.userId = userId
+    onlineUser[userId] = socket.id
+    console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`))
+    console.log(chalk.greenBright(`User connected ${socket.id}`))
+    next()
+})
 
 io.on('connection', (socket) => {
     console.log('connect : ', socket.id)
