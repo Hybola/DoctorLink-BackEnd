@@ -11,30 +11,30 @@ const io = new Server(server, {
 let users = []
 let allMsg = {}
 //======== P'First
-const onlineUser = {}
+// const onlineUser = {}
 
-io.use((socket, next) => {
-    const userId = socket.handshake.auth.id
+// io.use((socket, next) => {
+//     const userId = socket.handshake.auth.id
 
-    console.log(socket.id)
-    console.log(userId)
-    if (!userId) {
-        console.log(chalk.red('error connect'))
-        return next(new Error('invalid username'))
-    }
-    socket.userId = userId
-    onlineUser[userId] = socket.id
-    console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`))
-    console.log(chalk.greenBright(`User connected ${socket.id}`))
-    next()
-})
+//     console.log(socket.id)
+//     console.log(userId)
+//     if (!userId) {
+//         console.log(chalk.red('error connect'))
+//         return next(new Error('invalid username'))
+//     }
+//     socket.userId = userId
+//     onlineUser[userId] = socket.id
+//     console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`))
+//     console.log(chalk.greenBright(`User connected ${socket.id}`))
+//     next()
+// })
 
 io.on('connection', (socket) => {
     console.log('connect : ', socket.id)
     socket.on('enter', (data) => {
         let isNameExist =
             users.findIndex((el) => el.name === data.username) !== -1
-        if (isNameExist) return alert('Please choose another name')
+        // if (isNameExist) return alert('Please choose another name')
         socket.join(data.room)
         users.push({ id: socket.id, name: data.username, room: data.room })
         allMsg[data.room] = allMsg[data.room] ? allMsg[data.room] : []
@@ -50,6 +50,7 @@ io.on('connection', (socket) => {
         allMsg[room].push({ id: socket.id, username, msg })
         console.log(allMsg[room])
         io.to(room).emit('getMessage', allMsg[room])
+        // socket.to(room).broadcast.emit()
     })
 
     socket.on('disconnect', () => {
