@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
-            ProfileName: {
+            profileName: {
                 type: DataTypes.STRING,
             },
             email: {
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
             thainationalId: DataTypes.STRING,
             coverImage: DataTypes.STRING,
             description: DataTypes.STRING,
-            lindId: DataTypes.STRING,
+            lineId: DataTypes.STRING,
         },
         {
             underscored: true,

@@ -4,16 +4,18 @@ const cors = require('cors')
 const morgan = require('morgan') //จะคอยบอกว่า request ส่งอะไรมาบ้าง
 const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
-const http = require('http') 
+const http = require('http')
 
-
-const providerRoute = require('./routes/provider-route')
-const doctorRoute = require('./routes/doctor-route')
+// const providerRoute = require('./routes/provider-route')
+// const doctorRoute = require('./routes/doctor-route')
+const authRoute = require('./routes/auth-routes')
 const postRoute = require('./routes/post-route')
+const followRoute = require('./routes/follow-route')
+const profileRoute = require('./routes/profile-route')
 
 const notFoundMiddleware = require('./middlewares/not-found.js')
 const errorMiddleware = require('./middlewares/error')
-// const authDoctorMiddleware = require("./middlewares/doctor-authenticate");
+
 // const authProviderMiddleware = require('./middlewares/provider-authenticate')
 
 const app = express()
@@ -33,17 +35,17 @@ app.use(
 app.use(helmet())
 app.use(express.json())
 
+app.use('/auth', authRoute)
+app.use('/profile', profileRoute)
+app.use('/follow', followRoute)
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)
 })
-app.get("/", (req, res) => {
-    res.send("This is chat Server..");
-  });
+app.get('/', (req, res) => {
+    res.send('This is chat Server..')
+})
 
-
-app.use('/auth/provider', providerRoute)
-app.use('/auth/doctor', doctorRoute)
 // app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
 //app.use("/providerprofile", authenticate, providerRoute) //feature provider
 app.use('/post', postRoute) //feature post
