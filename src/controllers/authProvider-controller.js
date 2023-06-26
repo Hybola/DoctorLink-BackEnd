@@ -49,6 +49,31 @@ exports.login = async (req, res, next) => {
     }
 }
 
+exports.logingoogle = async (req, res, next) => {
+    try {
+        const value = req.body
+
+        const user = await providerService.getUserByEmail(value.email)
+
+        let userGoogle
+        
+        value.password = await bcryptService.hash(value.password)
+
+        if (!user) {
+            userGoogle = await providerService.createUser(value)
+        }
+
+        const accessToken = tokenService.sign({
+            id: userGoogle ? userGoogle.id : user.id,
+            role: 'provider',
+        })
+        res.status(200).json({ accessToken })
+    } catch (err) {
+        next(err)
+    }
+}
+
+
 exports.getMe = (req, res, next) => {
     res.status(200).json({ user: req.user })
 }
