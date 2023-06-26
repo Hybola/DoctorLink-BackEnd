@@ -16,6 +16,7 @@ exports.register = async (req, res, next) => {
         }
 
         value.password = await bcryptService.hash(value.password)
+        value.profileName = value.firstName + '  ' + value.lastName
 
         const user = await doctorService.createUser(value)
 
@@ -31,7 +32,7 @@ exports.login = async (req, res, next) => {
         const value = validateLogin(req.body)
         const user = await doctorService.getUserByEmail(value.email)
         if (!user) {
-            createError('invalid credential', 400)
+            createError('Please Register!', 400)
         }
         const isCorrect = await bcryptService.compare(
             value.password,
@@ -43,6 +44,29 @@ exports.login = async (req, res, next) => {
         }
 
         const accessToken = tokenService.sign({ id: user.id, role: 'doctor' })
+        res.status(200).json({ accessToken })
+    } catch (err) {
+        next(err)
+    }
+}
+exports.logingoogle = async (req, res, next) => {
+    try {
+        const value = req.body
+
+        const user = await doctorService.getUserByEmail(value.email)
+
+        let userGoogle
+
+        value.password = await bcryptService.hash(value.password)
+
+        if (!user) {
+            userGoogle = await doctorService.createUser(value)
+        }
+
+        const accessToken = tokenService.sign({
+            id: userGoogle ? userGoogle.id : user.id,
+            role: 'doctor',
+        })
         res.status(200).json({ accessToken })
     } catch (err) {
         next(err)
