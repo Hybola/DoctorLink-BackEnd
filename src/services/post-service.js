@@ -8,10 +8,10 @@ exports.newpart = async (part) => PartTime.create(part)
 
 exports.getAllPost = () => Post.findAll()
 
-exports.filterJob = async (filterObject) => {
+exports.filterJobFixLocation = async (filterObject) => {
     const searching = await Post.findAll({
         where: {
-            location: `%${filterObject?.location}%`,
+            location: filterObject.location,
             [Op.or]: [
                 {
                     title: {
@@ -28,4 +28,29 @@ exports.filterJob = async (filterObject) => {
         },
     })
     return searching
+}
+exports.filterJob = async (filterObject) => {
+    const searchingWaytwo = await Post.findAll({
+        where: {
+            [Op.or]: [
+                {
+                    title: {
+                        [Op.like]: `%${filterObject?.title}%`,
+                    },
+                },
+                {
+                    location: {
+                        [Op.like]: `%${filterObject?.location}%`,
+                    },
+                },
+
+                {
+                    jobType: {
+                        [Op.like]: `%${filterObject?.jobType}%`,
+                    },
+                },
+            ],
+        },
+    })
+    return searchingWaytwo
 }

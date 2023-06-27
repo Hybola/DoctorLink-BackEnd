@@ -26,14 +26,19 @@ exports.getAllPost = async (req, res, next) => {
 }
 
 exports.filterJob = async (req, res, next) => {
-    try {
-        const filterObject = req.body
-        console.log(filterObject)
+    const filterObject = req.body
+    console.log(req.body)
+
+    if (req.body.location.trim() == '') {
         const filterJob = await postService.filterJob(filterObject)
-        console.log(filterObject)
         res.json(filterJob)
-    } catch (err) {
-        next(err)
+        console.log(filterJob)
+    } else {
+        const filterJobFixLocation = await postService.filterJobFixLocation(
+            filterObject
+        )
+        res.json(filterJobFixLocation)
+        console.log(filterJobFixLocation)
     }
 }
 

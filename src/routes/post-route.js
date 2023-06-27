@@ -5,7 +5,8 @@ const router = express.Router()
 
 router.post('/createpost', postController.createpost)
 router.get('/getallpost', postController.getAllPost)
-router.get('/filterjob', postController.filterJob)
+router.post('/filterjob', postController.filterJob)
+
 // router.get('/getpost/:id', postController.getpostbyid)
 // router.delete('/delete', postController.deletepost)
 // router.put('/editpost', postController.editpost)
