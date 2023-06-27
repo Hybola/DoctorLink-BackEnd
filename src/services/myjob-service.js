@@ -1,8 +1,42 @@
-const { SavedJob } = require('../models')
+const {
+    SavedJob,
+    JobPost,
+    Provider,
+    Province,
+    PartTime,
+    FullTime,
+} = require('../models')
 
-exports.getSavedJobById = (id) =>
+exports.getSavedJobByDoctorId = (id) =>
     SavedJob.findAll({
         where: {
             doctorId: id,
+            status: 1,
+        },
+        include: [
+            {
+                model: JobPost,
+                include: [
+                    {
+                        model: Provider,
+                    },
+                    {
+                        model: Province,
+                    },
+                    {
+                        model: FullTime,
+                    },
+                    {
+                        model: PartTime,
+                    },
+                ],
+            },
+        ],
+    })
+
+exports.getFulltimeByjobId = (id) =>
+    SavedJob.findAll({
+        where: {
+            JobPostId: id,
         },
     })

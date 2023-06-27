@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
                 name: 'providerId',
                 allowNull: false,
             },
-            as: 'provider',
+            onDelete: 'RESTRICT',
         })
 
         JobPost.belongsTo(models.Province, {
