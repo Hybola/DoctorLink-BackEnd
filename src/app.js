@@ -36,6 +36,7 @@ app.use('/auth', authRoute)
 app.use('/profile', profileRoute)
 app.use('/follow', followRoute)
 app.use('/history', historyRoute)
+app.use('/post', postRoute)
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)
