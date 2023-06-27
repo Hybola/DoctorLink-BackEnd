@@ -1,4 +1,4 @@
-const { Post, FullTime, PartTime } = require('../models')
+const { JobPost, FullTime, PartTime } = require('../models')
 
 const { Op } = require('sequelize')
 
