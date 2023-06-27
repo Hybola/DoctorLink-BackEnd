@@ -10,7 +10,10 @@ const authRoute = require('./routes/auth-route')
 const postRoute = require('./routes/post-route')
 const followRoute = require('./routes/follow-route')
 const profileRoute = require('./routes/profile-route')
+const myJobRoute = require('./routes/myjob-route')
 
+const authenticate = require('./middlewares/authenticate')
+const authenticateDoctor = require('./middlewares/doctor-authenticate')
 const notFoundMiddleware = require('./middlewares/not-found.js')
 const errorMiddleware = require('./middlewares/error')
 
@@ -34,6 +37,8 @@ app.use(express.json())
 app.use('/auth', authRoute)
 app.use('/profile', profileRoute)
 app.use('/follow', followRoute)
+app.use('/myjob', authenticate, authenticateDoctor, myJobRoute)
+
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)
@@ -48,7 +53,6 @@ app.use('/post', postRoute) //feature post
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
-
 
 ////============ เปิดให้ Server run ==========////
 // const port = process.env.PORT || 8080
