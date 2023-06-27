@@ -44,6 +44,20 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            status: {
+                type: DataTypes.ENUM('active', 'inactive'),
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
+            statusDetail: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
         },
         {
             underscored: true,
