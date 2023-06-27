@@ -2,14 +2,14 @@ const { JobPost, FullTime, PartTime } = require('../models')
 
 const { Op } = require('sequelize')
 
-exports.newpost = async (post) => Post.create(post)
+exports.newpost = async (post) => JobPost.create(post)
 exports.newfull = async (full) => FullTime.create(full)
 exports.newpart = async (part) => PartTime.create(part)
 
-exports.getAllPost = () => Post.findAll()
+exports.getAllPost = () => JobPost.findAll()
 
 exports.filterJobFixLocation = async (filterObject) => {
-    const searching = await Post.findAll({
+    const searching = await JobPost.findAll({
         where: {
             location: filterObject.location,
             [Op.or]: [
@@ -30,7 +30,7 @@ exports.filterJobFixLocation = async (filterObject) => {
     return searching
 }
 exports.filterJob = async (filterObject) => {
-    const searchingWaytwo = await Post.findAll({
+    const searchingWaytwo = await JobPost.findAll({
         where: {
             [Op.or]: [
                 {
