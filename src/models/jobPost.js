@@ -99,6 +99,12 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
         })
+        JobPost.hasMany(models.JobInterest, {
+            foreignKey: {
+                name: 'jobPostId',
+                allowNull: false,
+            },
+        })
     }
 
     return JobPost
