@@ -26,14 +26,12 @@ io.use((socket, next) => {
     console.log(onlineProviders)
     next()
 })
-let doctorMsg = {};
-let prodiverMsg = {};
+
 
 io.on('connection', (socket) => {
     socket.on('startChat', (data) => {
         const newRoom = `${data.doctorId}:${data.provderId}`
         socket.join(newRoom)
-
         socket.to(onlineProviders[data.providerId]).emit('acceptChat',{newRoom, doctorId:data.doctorId})
     })
     socket.on("providerJoinRoom",newRoom=>{
@@ -43,13 +41,24 @@ io.on('connection', (socket) => {
 
     socket.on('doctorSendMessage',(data)=>{
         const Room = `${data.doctorId}:${data.provderId}`
-        socket.emit('providerGetMessage',{message:data.message, room:Room})
+        const mess={
+            message:data.message,
+            to:"provider",
+            from:"doctor"
+        }
+        socket.emit('providerGetMessage',{conversation:mess, room:Room})
     })
 
 
     socket.on('providerSendMessage',data=>{
         const room = `${data.doctorId}:${data.provderId}`
-        socket.to(room).emit('doctorGetMessage',data.message)
+
+        const mess={
+            message:data.message,
+            to:"doctor",
+            from:"provider"
+        }
+        socket.to(room).emit('doctorGetMessage',{conversation:mess})
 
     })
 })
