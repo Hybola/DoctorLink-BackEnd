@@ -7,6 +7,53 @@ const io = new Server(server, {
         origin: '*',
     },
 })
+
+////========= Chee's Code
+const onlineProviders = {}
+const onlineDoctors = {}
+
+io.use((socket, next) => {
+    const role = socket.handshake.auth.role
+    // console.log(socket.handshake.auth)
+    if (role == 'doctor') {
+        const doctorId = socket.handshake.auth.user.id
+        onlineDoctors[doctorId] = socket.id
+    } else if (role == 'provider') {
+        const providerId = socket.handshake.auth.user.id
+        onlineProviders[providerId] = socket.id
+    }
+    console.log(onlineDoctors)
+    console.log(onlineProviders)
+    next()
+})
+let doctorMsg = {};
+let prodiverMsg = {};
+
+io.on('connection', (socket) => {
+    socket.on('startChat', (data) => {
+        const newRoom = `${data.doctorId}:${data.provderId}`
+        socket.join(newRoom)
+
+        socket.to(onlineProviders[data.providerId]).emit('acceptChat',{newRoom, doctorId:data.doctorId})
+    })
+    socket.on("providerJoinRoom",newRoom=>{
+        socket.join(newRoom)
+    })
+
+
+    socket.on('doctorSendMessage',(data)=>{
+        const Room = `${data.doctorId}:${data.provderId}`
+        socket.emit('providerGetMessage',{message:data.message, room:Room})
+    })
+
+
+    socket.on('providerSendMessage',data=>{
+        const room = `${data.doctorId}:${data.provderId}`
+        socket.to(room).emit('doctorGetMessage',data.message)
+
+    })
+})
+
 //===== P'Jiang
 let users = []
 let allMsg = {}
@@ -24,11 +71,11 @@ let allMsg = {}
 //     }
 //     socket.userId = userId
 //     onlineUser[userId] = socket.id
-//     console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`))
-//     console.log(chalk.greenBright(`User connected ${socket.id}`))
+// console.log(chalk.greenBright(`online : ${Object.keys(onlineUser).length}`))
+// console.log(chalk.greenBright(`User connected ${socket.id}`))
 //     next()
 // })
-
+//===== P'Jiang
 io.on('connection', (socket) => {
     console.log('connect : ', socket.id)
     socket.on('enter', (data) => {
