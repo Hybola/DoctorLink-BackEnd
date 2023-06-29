@@ -15,7 +15,9 @@ module.exports = async (req, res, next) => {
         if (!token) {
             createError('Unauthorized', 401)
         }
+
         const payload = tokenService.verify(token)
+
         if (payload.role == 'doctor') {
             const user = await doctorSevice.getUserById(payload.id)
             const userForUse = JSON.parse(JSON.stringify(user))
