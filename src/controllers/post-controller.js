@@ -20,6 +20,33 @@ exports.createpost = async (req, res, next) => {
     }
 }
 
+exports.getAllPost = async (req, res, next) => {
+    try {
+        const allJobPost = await postService.getAllPost()
+        res.json(allJobPost)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.filterJob = async (req, res, next) => {
+    const filterObject = req.body
+    console.log(req.body)
+
+    if (req.body.location.trim() == '') {
+        const filterJob = await postService.filterJob(filterObject)
+        res.json(filterJob)
+        console.log(filterJob)
+    } else {
+        const filterJobFixLocation = await postService.filterJobFixLocation(
+            filterObject
+        )
+        res.json(filterJobFixLocation)
+        console.log(filterJobFixLocation)
+    }
+}
+
+// exports.getpostbyid = (req, res, next) => {}
 exports.getallpost = async (req, res, next) => {
     const getall = await postService.getall({
         attributes: {
