@@ -1,11 +1,9 @@
 const {
-    SavedJob,
     JobPost,
     Provider,
     Province,
     PartTime,
     FullTime,
-    JobInterest,
     DoctorJob,
 } = require('../models')
 
@@ -133,3 +131,32 @@ exports.downtoSaveJob = (id) =>
             },
         }
     )
+
+// ConfirmJob
+
+exports.getConfirmedJobByDoctorId = (id) =>
+    DoctorJob.findAll({
+        where: {
+            doctorId: id,
+            status: 3,
+        },
+        include: [
+            {
+                model: JobPost,
+                include: [
+                    {
+                        model: Provider,
+                    },
+                    {
+                        model: Province,
+                    },
+                    {
+                        model: FullTime,
+                    },
+                    {
+                        model: PartTime,
+                    },
+                ],
+            },
+        ],
+    })

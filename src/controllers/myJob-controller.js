@@ -44,6 +44,7 @@ exports.getAllSavedJob = async (req, res, next) => {
                 location: obj.JobPost.Province.name,
                 image: obj.JobPost.Provider.profileImage,
                 providerName: obj.JobPost.Provider.providerName,
+                providerId: obj.JobPost.Provider.id,
                 jobtype: obj.JobPost.jobType,
             }
 
@@ -125,6 +126,7 @@ exports.getInterestJob = async (req, res, next) => {
                 location: obj.JobPost.Province.name,
                 image: obj.JobPost.Provider.profileImage,
                 providerName: obj.JobPost.Provider.providerName,
+                providerId: obj.JobPost.Provider.id,
                 jobtype: obj.JobPost.jobType,
             }
 
@@ -149,6 +151,42 @@ exports.downtoSaveJob = async (req, res, next) => {
         const { id } = req.params
         const rs = await myJobService.downtoSaveJob(id)
         res.json(rs)
+    } catch (err) {
+        next(err)
+    }
+}
+
+// confirm job
+
+exports.getConfirmJob = async (req, res, next) => {
+    try {
+        const { id } = req.user
+        const confirmedJob = await myJobService.getConfirmedJobByDoctorId(id)
+        const confirmedJobObj = JSON.parse(JSON.stringify(confirmedJob))
+        const modifiedconfirmedJobObj = confirmedJobObj.map((obj) => {
+            const modified = {
+                doctorJobId: obj.id,
+                eventDate: obj.updatedAt,
+                jobPostId: obj.jobPostId,
+                title: obj.JobPost.title,
+                location: obj.JobPost.Province.name,
+                image: obj.JobPost.Provider.profileImage,
+                providerName: obj.JobPost.Provider.providerName,
+                providerId: obj.JobPost.Provider.id,
+                jobtype: obj.JobPost.jobType,
+            }
+
+            if (obj.JobPost.jobType == 'FullTime') {
+                modified['startDate'] = obj.JobPost.FullTimes[0]?.startDate
+            }
+            if (obj.JobPost.jobType == 'PartTime') {
+                modified['startDate'] = obj.JobPost.PartTimes[0]?.startDateTime
+                modified['endDate'] = obj.JobPost.PartTimes[0]?.endDateTime
+            }
+            return modified
+        })
+
+        res.json(modifiedconfirmedJobObj)
     } catch (err) {
         next(err)
     }
