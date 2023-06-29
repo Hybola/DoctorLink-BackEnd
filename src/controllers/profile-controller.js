@@ -6,7 +6,7 @@ exports.editMyProfile = async (req, res, next) => {
     try {
         const { id, role } = req.user
         const payload = req.body
-        console.log(payload)
+        // console.log(payload)
 
         if (role == 'doctor') {
             const rs = await profileService.editDoctorProfileById(payload, id)
@@ -66,7 +66,7 @@ exports.uploadImage = async (req, res, next) => {
 exports.getDoctorProfileById = async (req, res, next) => {
     try {
         const { id } = req.params
-        console.log(id)
+        // console.log(id)
         const profile = await profileService.getDoctorProfileById(id)
         res.json(profile)
     } catch (err) {
