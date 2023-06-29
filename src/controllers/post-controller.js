@@ -4,8 +4,7 @@ const postService = require('../services/post-service')
 exports.createpost = async (req, res, next) => {
     const value = req.body
     value.providerId = req.user.id
-
-    console.log(value)
+    value.status = 1
 
     const post = await postService.newpost(value)
     console.log(post)
@@ -31,7 +30,6 @@ exports.getAllPost = async (req, res, next) => {
 
 exports.filterJob = async (req, res, next) => {
     const filterObject = req.body
-    console.log(req.body)
 
     if (req.body.location.trim() == '') {
         const filterJob = await postService.filterJob(filterObject)
