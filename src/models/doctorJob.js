@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const SavedJob = sequelize.define(
-        'SavedJob',
+    const DoctorJob = sequelize.define(
+        'DoctorJob',
         {
             status: {
                 type: DataTypes.INTEGER,
@@ -10,25 +10,26 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            // 0: unsaved , 1: saved , 2: interest
         },
         {
             underscored: true,
         }
     )
-    SavedJob.associate = (models) => {
-        SavedJob.belongsTo(models.Doctor, {
-            foreignKey: {
-                name: 'doctorId',
-                allowNull: false,
-            },
-            onDelete: 'RESTRICT',
-        })
-        SavedJob.belongsTo(models.JobPost, {
+    DoctorJob.associate = (models) => {
+        DoctorJob.belongsTo(models.JobPost, {
             foreignKey: {
                 name: 'jobPostId',
                 allowNull: false,
             },
         })
+        DoctorJob.belongsTo(models.Doctor, {
+            foreignKey: {
+                name: 'doctorId',
+                allowNull: false,
+            },
+        })
     }
-    return SavedJob
+
+    return DoctorJob
 }

@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     Doctor.associate = (models) => {
-        Doctor.hasMany(models.SavedJob, {
+        Doctor.hasMany(models.DoctorJob, {
             foreignKey: {
                 name: 'doctorId',
                 allowNull: false,
