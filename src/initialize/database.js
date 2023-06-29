@@ -6,13 +6,11 @@ const {
     Doctor,
     Follow,
     FullTime,
-    JobInterest,
     JobPost,
     PartTime,
     Provider,
     Province,
     DoctorJob,
-    SavedJob,
 } = require('../models')
 
 const main = async () => {
@@ -25,8 +23,9 @@ const main = async () => {
             firstName: 'Naeramit',
             lastName: 'Ridtiya',
             profileName: 'Naeramit',
-            email: 'Naeramit@gmail.com',
-            password: '123456',
+            email: 'naeramit.18@gmail.com',
+            password:
+                '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895674332',
             profileImage: 'https://picsum.photos/200/300',
             licenseNumber: '123456789',
@@ -44,7 +43,8 @@ const main = async () => {
             lastName: 'okmigo',
             profileName: 'janny',
             email: 'janny@gmail.com',
-            password: '123456',
+            password:
+                '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895671332',
             profileImage: 'https://picsum.photos/200/300',
             licenseNumber: '123456789',
@@ -62,7 +62,8 @@ const main = async () => {
             lastName: 'ubon',
             profileName: 'jame',
             email: 'jame@gmail.com',
-            password: '123456',
+            password:
+                '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895624332',
             profileImage: 'https://picsum.photos/200/300',
             licenseNumber: '123456789',
@@ -80,7 +81,8 @@ const main = async () => {
             lastName: 'royua',
             profileName: 'jay',
             email: 'jay@gmail.com',
-            password: '123456',
+            password:
+                '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895673332',
             profileImage: 'https://picsum.photos/200/300',
             licenseNumber: '123456789',
@@ -98,7 +100,8 @@ const main = async () => {
             lastName: 'jang',
             profileName: 'jub',
             email: 'jub@gmail.com',
-            password: '123456',
+            password:
+                '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895474332',
             profileImage: 'https://picsum.photos/200/300',
             licenseNumber: '123456789',
@@ -321,14 +324,15 @@ const main = async () => {
             jobPostId: 6,
         },
     ])
+
+    // await Follow.bulkCreate([{}])
     await DoctorJob.bulkCreate([
         { id: 1, status: 1, jobPostId: 1, doctorId: 1 },
-        { id: 2, status: 1, jobPostId: 2, doctorId: 1 },
-        { id: 3, status: 1, jobPostId: 1, doctorId: 2 },
-        { id: 4, status: 1, jobPostId: 2, doctorId: 2 },
+        { id: 2, status: 2, jobPostId: 2, doctorId: 1 },
+        { id: 3, status: 2, jobPostId: 3, doctorId: 1 },
+        { id: 4, status: 3, jobPostId: 4, doctorId: 1 },
     ])
-    // await Follow.bulkCreate([{}])
-    // await SavedJob.bulkCreate([{}])
+
     process.exit()
 }
 main()

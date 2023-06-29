@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            // 0: unsaved , 1: saved , 2: interest, 3: get job
         },
         {
             underscored: true,
