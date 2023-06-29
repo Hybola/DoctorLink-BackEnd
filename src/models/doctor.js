@@ -4,17 +4,9 @@ module.exports = (sequelize, DataTypes) => {
         {
             firstName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             lastName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             profileName: {
                 type: DataTypes.STRING,
@@ -33,10 +25,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             mobile: {
                 type: DataTypes.STRING,
-                unique: true,
-                validate: {
-                    is: /^[0-9]{10}$/,
-                },
             },
             profileImage: DataTypes.STRING,
             licenceNumber: DataTypes.STRING,
@@ -44,13 +32,17 @@ module.exports = (sequelize, DataTypes) => {
             coverImage: DataTypes.STRING,
             description: DataTypes.STRING,
             lineId: DataTypes.STRING,
+            gender: DataTypes.INTEGER,
+            birthDate: DataTypes.DATE,
+            education: DataTypes.STRING,
+            workExperience: DataTypes.STRING,
         },
         {
             underscored: true,
         }
     )
     Doctor.associate = (models) => {
-        Doctor.hasMany(models.SavedJob, {
+        Doctor.hasMany(models.DoctorJob, {
             foreignKey: {
                 name: 'doctorId',
                 allowNull: false,
@@ -58,13 +50,6 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'RESTRICT',
         })
         Doctor.hasMany(models.Follow, {
-            foreignKey: {
-                name: 'doctorId',
-                allowNull: false,
-            },
-            onDelete: 'RESTRICT',
-        })
-        Doctor.hasMany(models.JobInterest, {
             foreignKey: {
                 name: 'doctorId',
                 allowNull: false,

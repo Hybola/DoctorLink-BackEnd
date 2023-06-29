@@ -3,7 +3,7 @@ const {
     PartTime,
     FullTime,
     JobPost,
-    JobInterest,
+    DoctorJob,
     Doctor,
 } = require('../models')
 const { Op } = require('sequelize')
@@ -15,7 +15,7 @@ exports.getHistoryPartTimeById = async (providerId) => {
                 model: PartTime,
             },
             {
-                model: JobInterest,
+                model: DoctorJob,
                 include: [
                     {
                         model: Doctor,
@@ -38,7 +38,7 @@ exports.getHistoryFullTimeById = async (providerId) => {
                 model: FullTime,
             },
             {
-                model: JobInterest,
+                model: DoctorJob,
                 include: [
                     {
                         model: Doctor,

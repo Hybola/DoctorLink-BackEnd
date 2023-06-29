@@ -16,5 +16,5 @@ const authenticate = require('../middlewares/authenticate')
 // router.post('/provider/login', authProviderController.login)
 // router.get('/provider/me', authenticate, authProviderController.getMe)
 // router.get('/doctor/me', authenticate, authDoctorController.getMe)
-router.get('/lists', historyController.getListsById)
+router.get('/lists', authenticate, historyController.getListsById)
 module.exports = router

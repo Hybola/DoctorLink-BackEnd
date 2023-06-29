@@ -5,18 +5,22 @@ const historyService = require('../services/history-service')
 exports.getListsById = async (req, res, next) => {
     const value = req.query
     console.log(value)
-    const arrResult = []
+    let arrResult = []
 
     try {
         const queryFullTime = await historyService.getHistoryFullTimeById(
             value.id
         )
-        arrResult.push(queryFullTime[0])
-
         const queryPartTime = await historyService.getHistoryPartTimeById(
             value.id
         )
-        arrResult.push(queryPartTime[0])
+
+        queryFullTime.map((item) => {
+            arrResult.push(item)
+        })
+        queryPartTime.map((item) => {
+            arrResult.push(item)
+        })
 
         res.status(200).json(arrResult)
     } catch (err) {
