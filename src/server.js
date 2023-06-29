@@ -27,40 +27,39 @@ io.use((socket, next) => {
     next()
 })
 
-
 io.on('connection', (socket) => {
     socket.on('startChat', (data) => {
         const newRoom = `${data.doctorId}:${data.provderId}`
         socket.join(newRoom)
-        socket.to(onlineProviders[data.providerId]).emit('acceptChat',{newRoom, doctorId:data.doctorId})
+        socket
+            .to(onlineProviders[data.providerId])
+            .emit('acceptChat', { newRoom, doctorId: data.doctorId })
     })
-    socket.on("providerJoinRoom",newRoom=>{
+    socket.on('providerJoinRoom', (newRoom) => {
         socket.join(newRoom)
     })
 
-
-    socket.on('doctorSendMessage',(data)=>{
+    socket.on('doctorSendMessage', (data) => {
         const Room = `${data.doctorId}:${data.provderId}`
-        const mess={
-            message:data.message,
-            to:"provider",
-            from:"doctor"
+        const mess = {
+            message: data.message,
+            to: 'provider',
+            from: 'doctor',
         }
-        socket.emit('providerGetMessage',{conversation:mess, room:Room})
+        socket.emit('providerGetMessage', { conversation: mess, room: Room })
     })
 
-
-    socket.on('providerSendMessage',data=>{
+    socket.on('providerSendMessage', (data) => {
         const room = `${data.doctorId}:${data.provderId}`
 
-        const mess={
-            message:data.message,
-            to:"doctor",
-            from:"provider"
+        const mess = {
+            message: data.message,
+            to: 'doctor',
+            from: 'provider',
         }
-        socket.to(room).emit('doctorGetMessage',{conversation:mess})
-
+        socket.to(room).emit('doctorGetMessage', { conversation: mess })
     })
+    socket.on('disconnect', () => {})
 })
 
 //===== P'Jiang
@@ -85,38 +84,38 @@ let allMsg = {}
 //     next()
 // })
 //===== P'Jiang
-io.on('connection', (socket) => {
-    console.log('connect : ', socket.id)
-    socket.on('enter', (data) => {
-        let isNameExist =
-            users.findIndex((el) => el.name === data.username) !== -1
-        // if (isNameExist) return alert('Please choose another name')
-        socket.join(data.room)
-        users.push({ id: socket.id, name: data.username, room: data.room })
-        allMsg[data.room] = allMsg[data.room] ? allMsg[data.room] : []
-        console.log(users)
-        console.log(allMsg)
-        io.to(data.room).emit('getMessage', allMsg[data.room])
-        // console.log('----------------')
-        // console.log(socket.rooms)
-    })
+// io.on('connection', (socket) => {
+//     console.log('connect : ', socket.id)
+//     socket.on('enter', (data) => {
+//         let isNameExist =
+//             users.findIndex((el) => el.name === data.username) !== -1
+//         // if (isNameExist) return alert('Please choose another name')
+//         socket.join(data.room)
+//         users.push({ id: socket.id, name: data.username, room: data.room })
+//         allMsg[data.room] = allMsg[data.room] ? allMsg[data.room] : []
+//         console.log(users)
+//         console.log(allMsg)
+//         io.to(data.room).emit('getMessage', allMsg[data.room])
+//         // console.log('----------------')
+//         // console.log(socket.rooms)
+//     })
 
-    socket.on('sendMessage', ({ username, msg, room }) => {
-        // console.log( socket.id,' : ', msg)
-        allMsg[room].push({ id: socket.id, username, msg })
-        console.log(allMsg[room])
-        io.to(room).emit('getMessage', allMsg[room])
-        // socket.to(room).broadcast.emit()
-    })
+//     socket.on('sendMessage', ({ username, msg, room }) => {
+//         // console.log( socket.id,' : ', msg)
+//         allMsg[room].push({ id: socket.id, username, msg })
+//         console.log(allMsg[room])
+//         io.to(room).emit('getMessage', allMsg[room])
+//         // socket.to(room).broadcast.emit()
+//     })
 
-    socket.on('disconnect', () => {
-        console.log('Disconnect : ', socket.id)
-        let idx = users.findIndex((el) => el.id === socket.id)
-        users.splice(idx, 1)
-        if (users.length === 0) allMsg = {}
-        console.log(users)
-    })
-})
+//     socket.on('disconnect', () => {
+//         console.log('Disconnect : ', socket.id)
+//         let idx = users.findIndex((el) => el.id === socket.id)
+//         users.splice(idx, 1)
+//         if (users.length === 0) allMsg = {}
+//         console.log(users)
+//     })
+// })
 
 const port = process.env.PORT || 8080
 server.listen(port, () => console.log('server running on port:' + port))
