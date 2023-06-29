@@ -18,17 +18,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             map: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             line: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             jobType: {
                 type: DataTypes.ENUM('FullTime', 'PartTime'),
@@ -43,6 +35,22 @@ module.exports = (sequelize, DataTypes) => {
                 validate: {
                     notEmpty: true,
                 },
+            },
+            status: {
+                type: DataTypes.ENUM('active', 'inactive'),
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
+            stage: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                defaultValue: 1,
+                validate: {
+                    notEmpty: true,
+                },
+                //0=ยกเลิก 1=รออนุมัติ 2=อนุมัติ
             },
         },
         {
@@ -66,14 +74,14 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'RESTRICT',
         })
 
-        JobPost.hasMany(models.PartTime, {
+        JobPost.hasOne(models.PartTime, {
             foreignKey: {
                 name: 'jobPostId',
                 allowNull: false,
             },
         })
 
-        JobPost.hasMany(models.FullTime, {
+        JobPost.hasOne(models.FullTime, {
             foreignKey: {
                 name: 'jobPostId',
                 allowNull: false,

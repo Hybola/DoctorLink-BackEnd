@@ -41,7 +41,7 @@ exports.getAllSavedJob = async (req, res, next) => {
                 eventDate: obj.updatedAt,
                 jobPostId: obj.jobPostId,
                 title: obj.JobPost.title,
-                location: obj.JobPost.Province.name,
+                location: obj.JobPost.Province.abbrievation,
                 image: obj.JobPost.Provider.profileImage,
                 providerName: obj.JobPost.Provider.providerName,
                 providerId: obj.JobPost.Provider.id,
@@ -49,11 +49,11 @@ exports.getAllSavedJob = async (req, res, next) => {
             }
 
             if (obj.JobPost.jobType == 'FullTime') {
-                modified['startDate'] = obj.JobPost.FullTimes[0]?.startDate
+                modified['startDate'] = obj.JobPost.FullTime?.startDate
             }
             if (obj.JobPost.jobType == 'PartTime') {
-                modified['startDate'] = obj.JobPost.PartTimes[0]?.startDateTime
-                modified['endDate'] = obj.JobPost.PartTimes[0]?.endDateTime
+                modified['startDate'] = obj.JobPost.PartTime?.startDate
+                modified['endDate'] = obj.JobPost.PartTime?.endDate
             }
             return modified
         })
@@ -131,11 +131,11 @@ exports.getInterestJob = async (req, res, next) => {
             }
 
             if (obj.JobPost.jobType == 'FullTime') {
-                modified['startDate'] = obj.JobPost.FullTimes[0]?.startDate
+                modified['startDate'] = obj.JobPost.FullTime?.startDate
             }
             if (obj.JobPost.jobType == 'PartTime') {
-                modified['startDate'] = obj.JobPost.PartTimes[0]?.startDateTime
-                modified['endDate'] = obj.JobPost.PartTimes[0]?.endDateTime
+                modified['startDate'] = obj.JobPost.PartTime?.startDate
+                modified['endDate'] = obj.JobPost.PartTime?.endDate
             }
             return modified
         })
@@ -177,11 +177,11 @@ exports.getConfirmJob = async (req, res, next) => {
             }
 
             if (obj.JobPost.jobType == 'FullTime') {
-                modified['startDate'] = obj.JobPost.FullTimes[0]?.startDate
+                modified['startDate'] = obj.JobPost.FullTime?.startDate
             }
             if (obj.JobPost.jobType == 'PartTime') {
-                modified['startDate'] = obj.JobPost.PartTimes[0]?.startDateTime
-                modified['endDate'] = obj.JobPost.PartTimes[0]?.endDateTime
+                modified['startDate'] = obj.JobPost.PartTime?.startDate
+                modified['endDate'] = obj.JobPost.PartTime?.endDate
             }
             return modified
         })

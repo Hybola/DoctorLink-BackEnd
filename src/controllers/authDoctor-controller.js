@@ -31,8 +31,17 @@ exports.login = async (req, res, next) => {
     try {
         const value = validateLogin(req.body)
         const user = await doctorService.getUserByEmail(value.email)
+
+        if (user) {
+            const accessToken = tokenService.sign({
+                id: user.id,
+                role: 'doctor',
+            })
+            res.status(200).json({ accessToken })
+        }
+
         if (!user) {
-            createError('Please Register!', 400)
+            createError('Please Register', 400)
         }
         const isCorrect = await bcryptService.compare(
             value.password,
@@ -40,11 +49,11 @@ exports.login = async (req, res, next) => {
         )
 
         if (!isCorrect) {
-            createError('invalid credential', 400)
+            createError('Invalid credential', 400)
         }
 
-        const accessToken = tokenService.sign({ id: user.id, role: 'doctor' })
-        res.status(200).json({ accessToken })
+        // const accessToken = tokenService.sign({ id: user.id, role: 'doctor' })
+        // res.status(200).json({ accessToken })
     } catch (err) {
         next(err)
     }
@@ -61,18 +70,24 @@ exports.logingoogle = async (req, res, next) => {
 
         if (!user) {
             userGoogle = await doctorService.createUser(value)
+            const accessToken = tokenService.sign({
+                id: userGoogle.id,
+                role: 'doctor',
+            })
+            res.status(200).json({ accessToken })
         }
-
-        const accessToken = tokenService.sign({
-            id: userGoogle ? userGoogle.id : user.id,
-            role: 'doctor',
-        })
-        res.status(200).json({ accessToken })
+        if (user) {
+            const accessToken = tokenService.sign({
+                id: user.id,
+                role: 'doctor',
+            })
+            res.status(200).json({ accessToken })
+        }
     } catch (err) {
         next(err)
     }
 }
 
 exports.getMe = (req, res, next) => {
-    res.status(200).json({ user: req.user })
+    res.status(200).json({ id: req.user.id, role: req.user.role })
 }

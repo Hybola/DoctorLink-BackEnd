@@ -4,19 +4,15 @@ module.exports = (sequelize, DataTypes) => {
         {
             jobDes: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
-            startDateTime: {
+            startDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            endDateTime: {
+            endDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
@@ -32,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             other: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
         },
         {

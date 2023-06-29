@@ -11,6 +11,7 @@ const postRoute = require('./routes/post-route')
 const followRoute = require('./routes/follow-route')
 const profileRoute = require('./routes/profile-route')
 const myJobRoute = require('./routes/myjob-route')
+const historyRoute = require('./routes/history-routes')
 
 const authenticate = require('./middlewares/authenticate')
 const authenticateDoctor = require('./middlewares/doctor-authenticate')
@@ -39,6 +40,8 @@ app.use('/profile', profileRoute)
 app.use('/follow', followRoute)
 app.use('/myjob', authenticate, authenticateDoctor, myJobRoute)
 
+app.use('/history', historyRoute)
+app.use('/post', authenticate, postRoute)
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)

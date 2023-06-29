@@ -2,6 +2,10 @@ module.exports = (sequelize, DataTypes) => {
     const Province = sequelize.define(
         'Province',
         {
+            abbrievation: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
