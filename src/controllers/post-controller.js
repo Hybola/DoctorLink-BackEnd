@@ -1,5 +1,6 @@
 // postcontroller
 const postService = require('../services/post-service')
+const mapJobPost = require('../utils/mapJopPost')
 
 exports.createpost = async (req, res, next) => {
     const value = req.body
@@ -71,41 +72,7 @@ exports.doctorGetPostbyProviderId = async (req, res, next) => {
         )
         const postObj = JSON.parse(JSON.stringify(postbyProviderId))
 
-        const addJobStatus = postObj.map((post) => {
-            if (post.DoctorJobs.length == 0) {
-                return { ...post, jobStatus: 0 }
-            }
-            const doctorAddJob = post.DoctorJobs.find(
-                (obj) => obj.doctorId == req.user.id
-            )
-            if (doctorAddJob) {
-                return { ...post, jobStatus: doctorAddJob.status }
-            }
-            return { ...post, jobStatus: 0 }
-        })
-
-        const result = addJobStatus.map((obj) => {
-            const modified = {
-                id: obj.id,
-                title: obj.title,
-                location: obj.location,
-                map: obj.map,
-                line: obj.line,
-                jobType: obj.jobType,
-                phone: obj.phone,
-                status: obj.status,
-                stage: obj.stage,
-                createdAt: obj.createdAt,
-                updatedAt: obj.updateAt,
-                providerId: obj.providerId,
-                providerName: obj.Provider.providerName,
-                providerProfileImage: obj.Provider.profileImage,
-                providerCoverImage: obj.Provider.coverImage,
-                Province: obj.Province.name,
-                jobStatus: obj.jobStatus,
-            }
-            return modified
-        })
+        const result = mapJobPost(postObj, req.user.id)
 
         res.status(200).json(result)
     } catch (err) {
@@ -118,40 +85,9 @@ exports.doctorGetPostById = async (req, res, next) => {
         const { id } = req.params
         const post = await postService.doctorGetPostById(id)
         const postObj = JSON.parse(JSON.stringify(post))
-        const addJobStatus = postObj.map((post) => {
-            if (post.DoctorJobs.length == 0) {
-                return { ...post, jobStatus: 0 }
-            }
-            const doctorAddJob = post.DoctorJobs.find(
-                (obj) => obj.doctorId == req.user.id
-            )
-            if (doctorAddJob) {
-                return { ...post, jobStatus: doctorAddJob.status }
-            }
-            return { ...post, jobStatus: 0 }
-        })
-        const result = addJobStatus.map((obj) => {
-            const modified = {
-                id: obj.id,
-                title: obj.title,
-                location: obj.location,
-                map: obj.map,
-                line: obj.line,
-                jobType: obj.jobType,
-                phone: obj.phone,
-                status: obj.status,
-                stage: obj.stage,
-                createdAt: obj.createdAt,
-                updatedAt: obj.updateAt,
-                providerId: obj.providerId,
-                providerName: obj.Provider.providerName,
-                providerProfileImage: obj.Provider.profileImage,
-                providerCoverImage: obj.Provider.coverImage,
-                Province: obj.Province.name,
-                jobStatus: obj.jobStatus,
-            }
-            return modified
-        })
+
+        const result = mapJobPost(postObj, req.user.id)
+
         res.status(200).json(result)
     } catch (err) {
         next(err)
