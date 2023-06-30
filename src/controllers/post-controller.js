@@ -116,8 +116,43 @@ exports.doctorGetPostbyProviderId = async (req, res, next) => {
 exports.doctorGetPostById = async (req, res, next) => {
     try {
         const { id } = req.params
-        const rs = await postService.doctorGetPostById(id)
-        res.status(200).json(rs)
+        const post = await postService.doctorGetPostById(id)
+        const postObj = JSON.parse(JSON.stringify(post))
+        const addJobStatus = postObj.map((post) => {
+            if (post.DoctorJobs.length == 0) {
+                return { ...post, jobStatus: 0 }
+            }
+            const doctorAddJob = post.DoctorJobs.find(
+                (obj) => obj.doctorId == req.user.id
+            )
+            if (doctorAddJob) {
+                return { ...post, jobStatus: doctorAddJob.status }
+            }
+            return { ...post, jobStatus: 0 }
+        })
+        const result = addJobStatus.map((obj) => {
+            const modified = {
+                id: obj.id,
+                title: obj.title,
+                location: obj.location,
+                map: obj.map,
+                line: obj.line,
+                jobType: obj.jobType,
+                phone: obj.phone,
+                status: obj.status,
+                stage: obj.stage,
+                createdAt: obj.createdAt,
+                updatedAt: obj.updateAt,
+                providerId: obj.providerId,
+                providerName: obj.Provider.providerName,
+                providerProfileImage: obj.Provider.profileImage,
+                providerCoverImage: obj.Provider.coverImage,
+                Province: obj.Province.name,
+                jobStatus: obj.jobStatus,
+            }
+            return modified
+        })
+        res.status(200).json(result)
     } catch (err) {
         next(err)
     }

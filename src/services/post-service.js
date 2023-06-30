@@ -75,12 +75,18 @@ exports.doctorGetPostbyProviderId = (providerId) =>
             {
                 model: Provider,
             },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
+            },
         ],
     })
 
 exports.doctorGetPostById = (postId) =>
     JobPost.findAll({
-        where: { providerId: providerId, stage: 1 },
+        where: { id: postId, stage: 1 },
         include: [
             {
                 model: DoctorJob,
@@ -90,6 +96,12 @@ exports.doctorGetPostById = (postId) =>
             },
             {
                 model: Provider,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
             },
         ],
     })
