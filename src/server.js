@@ -1,6 +1,6 @@
 const { Server } = require('socket.io')
 const server = require('./app')
-const chalk = require('chalk')
+// const { config } = require('dotenv')
 
 const io = new Server(server, {
     cors: {
@@ -22,42 +22,48 @@ io.use((socket, next) => {
         const providerId = socket.handshake.auth.user.id
         onlineProviders[providerId] = socket.id
     }
-    console.log(onlineDoctors)
-    console.log(onlineProviders)
     next()
 })
 
 io.on('connection', (socket) => {
     socket.on('startChat', (data) => {
-        const newRoom = `${data.doctorId}:${data.provderId}`
+        const newRoom = `${data.doctorId}:${data.providerId}`
         socket.join(newRoom)
+
+        // console.log('newRoom ====>>', newRoom)
+        // console.log('onlineProviders===>>>', onlineProviders)//{ '1': 'nmmHycRn4JzElAXcAAAL' }
+        // console.log('onlineDoctors===>>>', onlineDoctors)// { '1': '6OBIqs1bCraSogTmAAAN' }
         socket
             .to(onlineProviders[data.providerId])
             .emit('acceptChat', { newRoom, doctorId: data.doctorId })
     })
     socket.on('providerJoinRoom', (newRoom) => {
+        // console.log("providerJoinRoom===>",newRoom)// run as 1:1
         socket.join(newRoom)
     })
 
     socket.on('doctorSendMessage', (data) => {
-        const Room = `${data.doctorId}:${data.provderId}`
-        const mess = {
-            message: data.message,
-            to: 'provider',
-            from: 'doctor',
-        }
-        socket.emit('providerGetMessage', { conversation: mess, room: Room })
+        // const Room = `${data.doctorId}:${data.providerId}`
+        // const conversation = {
+        //     message: data.input,
+        //     to: 'provider',
+        //     from: 'doctor',
+        // }
+        console.log('Doctor sendsconversation===>>>', data.conversation) //{ message: "i'm a doctor", to: 'provider', from: 'doctor' }
+        console.log('room===>>>', data.room) // 1:1
+
+        socket.to(data.room).emit('providerGetMessage', {
+            conversation: data.conversation,
+            room: data.room,
+        })
     })
 
     socket.on('providerSendMessage', (data) => {
-        const room = `${data.doctorId}:${data.provderId}`
-
-        const mess = {
-            message: data.message,
-            to: 'doctor',
-            from: 'provider',
-        }
-        socket.to(room).emit('doctorGetMessage', { conversation: mess })
+        // console.log('providerSendMessage to room:', data.room)
+        // console.log('with Conversation:', data.conversation)
+        socket
+            .to(data.room)
+            .emit('doctorGetMessage', { conversation: data.conversation })
     })
     socket.on('disconnect', () => {})
 })
