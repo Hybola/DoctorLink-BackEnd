@@ -13,15 +13,18 @@ const onlineProviders = {}
 const onlineDoctors = {}
 
 io.use((socket, next) => {
-    const role = socket.handshake.auth.role
+    socket.userId = socket.handshake.auth.user.id
+    socket.role = socket.handshake.auth.role
     // console.log(socket.handshake.auth)
-    if (role == 'doctor') {
+    if (socket.role == 'doctor') {
         const doctorId = socket.handshake.auth.user.id
         onlineDoctors[doctorId] = socket.id
-    } else if (role == 'provider') {
+    } else if (socket.role == 'provider') {
         const providerId = socket.handshake.auth.user.id
         onlineProviders[providerId] = socket.id
     }
+    console.log('ONLINE providers:', onlineProviders)
+    console.log('ONLINE doctors:', onlineDoctors)
     next()
 })
 
@@ -65,7 +68,13 @@ io.on('connection', (socket) => {
             .to(data.room)
             .emit('doctorGetMessage', { conversation: data.conversation })
     })
-    socket.on('disconnect', () => {})
+    socket.on('disconnect', () => {
+        console.log('before delete user', onlineProviders)
+        if (socket.role == 'provider') delete onlineProviders[socket.userId]
+        else if (socket.role == 'doctor') delete onlineDoctors[socket.userId]
+        // console.log('Disconnect socket id: ', onlineProviders[socket.userId])
+        // console.log('after delete user', onlineProviders)
+    })
 })
 
 //===== P'Jiang
@@ -114,13 +123,13 @@ let allMsg = {}
 //         // socket.to(room).broadcast.emit()
 //     })
 
-//     socket.on('disconnect', () => {
-//         console.log('Disconnect : ', socket.id)
-//         let idx = users.findIndex((el) => el.id === socket.id)
-//         users.splice(idx, 1)
-//         if (users.length === 0) allMsg = {}
-//         console.log(users)
-//     })
+// socket.on('disconnect', () => {
+//     console.log('Disconnect : ', socket.id)
+//     let idx = users.findIndex((el) => el.id === socket.id)
+//     users.splice(idx, 1)
+//     if (users.length === 0) allMsg = {}
+//     console.log(users)
+// })
 // })
 
 const port = process.env.PORT || 8080
