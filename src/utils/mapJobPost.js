@@ -32,14 +32,14 @@ module.exports = (postObj, doctorId) => {
             Province: obj.Province.name,
             jobStatus: obj.jobStatus,
         }
-        if (obj.FulTime) {
-            modified.jobDes = obj.FulTime.jobDes
-            modified.workingDay = obj.FulTime.workingDay
-            modified.startDate = obj.FulTime.startDate
-            modified.salary = obj.FulTime.salary
-            modified.annual = obj.FulTime.annual
-            modified.benefit = obj.FulTime.benefit
-            modified.other = obj.FulTime.other
+        if (obj.FullTime) {
+            modified.jobDes = obj.FullTime.jobDes
+            modified.workingDay = obj.FullTime.workingDay
+            modified.startDate = obj.FullTime.startDate
+            modified.salary = obj.FullTime.salary
+            modified.annual = obj.FullTime.annual
+            modified.benefit = obj.FullTime.benefit
+            modified.other = obj.FullTime.other
         }
         if (obj.PartTime) {
             modified.jobDes = obj.PartTime.jobDes
@@ -50,5 +50,6 @@ module.exports = (postObj, doctorId) => {
         }
         return modified
     })
+
     return result
 }

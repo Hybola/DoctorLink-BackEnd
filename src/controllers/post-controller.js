@@ -1,6 +1,6 @@
 // postcontroller
 const postService = require('../services/post-service')
-const mapJobPost = require('../utils/mapJopPost')
+const mapJobPost = require('../utils/mapJobPost')
 
 exports.createpost = async (req, res, next) => {
     const value = req.body
@@ -85,6 +85,7 @@ exports.doctorGetPostById = async (req, res, next) => {
         const { id } = req.params
         const post = await postService.doctorGetPostById(id)
         const postObj = JSON.parse(JSON.stringify(post))
+        
 
         const result = mapJobPost(postObj, req.user.id)
 
