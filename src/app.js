@@ -39,9 +39,8 @@ app.use('/auth', authRoute)
 app.use('/profile', profileRoute)
 app.use('/follow', followRoute)
 app.use('/myjob', authenticate, authenticateDoctor, myJobRoute)
-
 app.use('/history', historyRoute)
-app.use('/post', authenticate, postRoute)
+app.use('/post', postRoute)
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)
@@ -49,10 +48,6 @@ app.use('/test', (req, res) => {
 app.get('/', (req, res) => {
     res.send('This is chat Server..')
 })
-
-// app.use("/doctorprofile",authenticate, doctorRoute) // feature doctor
-//app.use("/providerprofile", authenticate, providerRoute) //feature provider
-app.use('/post', postRoute) //feature post
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)

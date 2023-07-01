@@ -7,7 +7,6 @@ exports.getDoctorProfileById = (id) =>
             id,
         },
         attributes: [
-            'id',
             'profileName',
             'firstName',
             'lastName',
@@ -16,6 +15,10 @@ exports.getDoctorProfileById = (id) =>
             'coverImage',
             'mobile',
             'lineId',
+            'gender',
+            'birthDate',
+            'education',
+            'workExperience',
         ],
     })
 
@@ -29,7 +32,6 @@ exports.getProviderProfileById = (id) =>
             attributes: ['name'],
         },
         attributes: [
-            'id',
             'providerName',
             'description',
             'profileImage',
