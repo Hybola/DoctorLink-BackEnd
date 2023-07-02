@@ -14,13 +14,15 @@ const onlineDoctors = {}
 
 io.use((socket, next) => {
     socket.userId = socket.handshake.auth.user.id
+
     socket.role = socket.handshake.auth.role
+    socket.user = socket.handshake.auth.user
     // console.log(socket.handshake.auth)
     if (socket.role == 'doctor') {
-        const doctorId = socket.handshake.auth.user.id
+        const doctorId = socket.user.id
         onlineDoctors[doctorId] = socket.id
     } else if (socket.role == 'provider') {
-        const providerId = socket.handshake.auth.user.id
+        const providerId = socket.user.id
         onlineProviders[providerId] = socket.id
     }
     console.log('ONLINE providers:', onlineProviders)
@@ -70,8 +72,8 @@ io.on('connection', (socket) => {
     })
     socket.on('disconnect', () => {
         console.log('before delete user', onlineProviders)
-        if (socket.role == 'provider') delete onlineProviders[socket.userId]
-        else if (socket.role == 'doctor') delete onlineDoctors[socket.userId]
+        if (socket.role == 'provider') delete onlineProviders[socket.user.id]
+        else if (socket.role == 'doctor') delete onlineDoctors[socket.user.id]
         // console.log('Disconnect socket id: ', onlineProviders[socket.userId])
         // console.log('after delete user', onlineProviders)
     })
