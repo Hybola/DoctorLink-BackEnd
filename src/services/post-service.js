@@ -13,51 +13,56 @@ exports.newpost = async (post) => JobPost.create(post)
 exports.newfull = async (full) => FullTime.create(full)
 exports.newpart = async (part) => PartTime.create(part)
 
-exports.getAllPost = () => JobPost.findAll()
+exports.getAllPost = () =>
+    JobPost.findAll({
+        include: [{ model: FullTime }, { model: PartTime }],
+    })
 
-exports.filterJobFixLocation = async (filterObject) => {
-    const searching = await JobPost.findAll({
+exports.filterJobFixLocation = (filterObject) => {
+    const searching = JobPost.findAll({
         where: {
-            location: filterObject.location,
+            provinceId: filterObject.provinceId,
             [Op.or]: [
                 {
                     title: {
-                        [Op.like]: `%${filterObject?.title}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
 
                 {
                     jobType: {
-                        [Op.like]: `%${filterObject?.jobType}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
             ],
         },
+        include: [{ model: FullTime }, { model: PartTime }],
     })
     return searching
 }
-exports.filterJob = async (filterObject) => {
-    const searchingWaytwo = await JobPost.findAll({
+exports.filterJob = (filterObject) => {
+    const searchingWaytwo = JobPost.findAll({
         where: {
             [Op.or]: [
                 {
                     title: {
-                        [Op.like]: `%${filterObject?.title}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
                 {
                     location: {
-                        [Op.like]: `%${filterObject?.location}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
 
                 {
                     jobType: {
-                        [Op.like]: `%${filterObject?.jobType}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
             ],
         },
+        include: [{ model: FullTime }, { model: PartTime }],
     })
     return searchingWaytwo
 }
