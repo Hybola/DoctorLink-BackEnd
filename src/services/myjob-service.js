@@ -10,11 +10,10 @@ const {
 // SavedJob
 
 exports.findDoctorJob = (doctorId, jobPostId) =>
-    DoctorJob.findOne({
+    DoctorJob.findAll({
         where: {
             doctorId,
             jobPostId,
-            status: 0,
         },
     })
 
@@ -68,17 +67,6 @@ exports.unSavedJobById = (id) =>
         }
     )
 
-exports.uptoInterestJob = (id) =>
-    DoctorJob.update(
-        { status: 2 },
-        {
-            where: {
-                id,
-                status: 1,
-            },
-        }
-    )
-
 // InterestJob
 
 exports.interestJob = (payload) => DoctorJob.create(payload)
@@ -90,6 +78,17 @@ exports.uptoInterestJob = (id) =>
             where: {
                 id,
                 status: 1,
+            },
+        }
+    )
+
+exports.updateInterestJob = (doctorId, jobPostId) =>
+    DoctorJob.update(
+        { status: 2 },
+        {
+            where: {
+                doctorId,
+                jobPostId,
             },
         }
     )

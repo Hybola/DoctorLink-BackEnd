@@ -94,9 +94,12 @@ exports.interestJob = async (req, res, next) => {
         )
         const doctorJobObj = JSON.parse(JSON.stringify(doctorJob))
 
-        if (doctorJobObj) {
-            const rs = await myJobService.uptoInterestJob(doctorJobObj.id)
-            res.json({ doctorJobId: doctorJobObj.id })
+        if (doctorJobObj.length) {
+            const rs = await myJobService.updateInterestJob(
+                req.user.id,
+                jobpostId
+            )
+            res.json({ doctorJobId: 'many' })
         } else {
             const payload = {
                 status: 2,
