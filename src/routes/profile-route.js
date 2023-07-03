@@ -38,4 +38,5 @@ router.get('/provider/:id', profileController.getProviderProfileById)
 router.get('/doctor/:id', profileController.getDoctorProfileById)
 router.get('/province', profileController.getProvince)
 
+
 module.exports = router
