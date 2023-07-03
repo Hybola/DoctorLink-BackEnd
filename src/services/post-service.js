@@ -79,7 +79,7 @@ exports.filterJob = (filterObject) => {
     return searchingWaytwo
 }
 
-exports.doctorGetPostbyProviderId = (providerId) =>
+exports.getPostbyProviderId = (providerId) =>
     JobPost.findAll({
         where: { providerId: providerId, stage: 1 },
         include: [
@@ -101,7 +101,7 @@ exports.doctorGetPostbyProviderId = (providerId) =>
         ],
     })
 
-exports.doctorGetPostById = (postId) =>
+exports.getPostById = (postId) =>
     JobPost.findAll({
         where: { id: postId, stage: 1 },
         include: [
