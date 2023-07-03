@@ -1,4 +1,11 @@
-const { JobPost, FullTime, PartTime } = require('../models')
+const {
+    JobPost,
+    FullTime,
+    PartTime,
+    DoctorJob,
+    Province,
+    Provider,
+} = require('../models')
 
 const { Op } = require('sequelize')
 
@@ -6,51 +13,100 @@ exports.newpost = async (post) => JobPost.create(post)
 exports.newfull = async (full) => FullTime.create(full)
 exports.newpart = async (part) => PartTime.create(part)
 
-exports.getAllPost = () => JobPost.findAll()
+exports.getAllPost = () =>
+    JobPost.findAll({
+        include: [{ model: FullTime }, { model: PartTime }],
+    })
 
-exports.filterJobFixLocation = async (filterObject) => {
-    const searching = await JobPost.findAll({
+exports.filterJobFixLocation = (filterObject) => {
+    const searching = JobPost.findAll({
         where: {
-            location: filterObject.location,
+            provinceId: filterObject.provinceId,
             [Op.or]: [
                 {
                     title: {
-                        [Op.like]: `%${filterObject?.title}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
 
                 {
                     jobType: {
-                        [Op.like]: `%${filterObject?.jobType}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
             ],
         },
+        include: [{ model: FullTime }, { model: PartTime }],
     })
     return searching
 }
-exports.filterJob = async (filterObject) => {
-    const searchingWaytwo = await JobPost.findAll({
+exports.filterJob = (filterObject) => {
+    const searchingWaytwo = JobPost.findAll({
         where: {
             [Op.or]: [
                 {
                     title: {
-                        [Op.like]: `%${filterObject?.title}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
                 {
                     location: {
-                        [Op.like]: `%${filterObject?.location}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
 
                 {
                     jobType: {
-                        [Op.like]: `%${filterObject?.jobType}%`,
+                        [Op.like]: `%${filterObject?.searchText}%`,
                     },
                 },
             ],
         },
+        include: [{ model: FullTime }, { model: PartTime }],
     })
     return searchingWaytwo
 }
+
+exports.doctorGetPostbyProviderId = (providerId) =>
+    JobPost.findAll({
+        where: { providerId: providerId, stage: 1 },
+        include: [
+            {
+                model: DoctorJob,
+            },
+            {
+                model: Province,
+            },
+            {
+                model: Provider,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
+            },
+        ],
+    })
+
+exports.doctorGetPostById = (postId) =>
+    JobPost.findAll({
+        where: { id: postId, stage: 1 },
+        include: [
+            {
+                model: DoctorJob,
+            },
+            {
+                model: Province,
+            },
+            {
+                model: Provider,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
+            },
+        ],
+    })

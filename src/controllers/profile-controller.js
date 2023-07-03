@@ -86,3 +86,12 @@ exports.getProviderProfileById = async (req, res, next) => {
         next(err)
     }
 }
+
+exports.getProvince = async (req, res, next) => {
+    try {
+        const province = await profileService.getProvince()
+        res.json(province)
+    } catch (err) {
+        next(err)
+    }
+}
