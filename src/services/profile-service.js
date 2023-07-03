@@ -9,6 +9,8 @@ exports.getDoctorProfileById = (id) =>
         attributes: [
             'id',
             'profileName',
+            'firstName',
+            'lastName',
             'description',
             'profileImage',
             'coverImage',

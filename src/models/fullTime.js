@@ -4,20 +4,12 @@ module.exports = (sequelize, DataTypes) => {
         {
             jobDes: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             workingDay: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             startDate: {
-                type: DataTypes.DATEONLY,
+                type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
@@ -32,24 +24,12 @@ module.exports = (sequelize, DataTypes) => {
             },
             annual: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             benefit: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             other: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
         },
         {
