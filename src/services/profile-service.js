@@ -62,3 +62,5 @@ exports.editProviderProfileById = (payload, id) =>
             id: id,
         },
     })
+
+exports.getProvince = () => Province.findAll()
