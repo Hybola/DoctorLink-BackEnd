@@ -15,7 +15,11 @@ exports.newpart = async (part) => PartTime.create(part)
 
 exports.getAllPost = () =>
     JobPost.findAll({
-        include: [{ model: FullTime }, { model: PartTime }],
+        include: [
+            { model: FullTime },
+            { model: PartTime },
+            { model: Provider },
+        ],
     })
 
 exports.filterJobFixLocation = (filterObject) => {
@@ -36,7 +40,11 @@ exports.filterJobFixLocation = (filterObject) => {
                 },
             ],
         },
-        include: [{ model: FullTime }, { model: PartTime }],
+        include: [
+            { model: FullTime },
+            { model: PartTime },
+            { model: Provider },
+        ],
     })
     return searching
 }
@@ -62,7 +70,11 @@ exports.filterJob = (filterObject) => {
                 },
             ],
         },
-        include: [{ model: FullTime }, { model: PartTime }],
+        include: [
+            { model: FullTime },
+            { model: PartTime },
+            { model: Provider },
+        ],
     })
     return searchingWaytwo
 }
