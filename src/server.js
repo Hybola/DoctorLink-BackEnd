@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
         // console.log('newRoom ====>>', newRoom)
         // console.log('onlineProviders===>>>', onlineProviders)//{ '1': 'nmmHycRn4JzElAXcAAAL' }
         // console.log('onlineDoctors===>>>', onlineDoctors)// { '1': '6OBIqs1bCraSogTmAAAN' }
-        console.log("data.doctor>>>>",data.doctorProfile)  //{profileName,firstName, lastName,description, profileImage,...}
+        console.log("data.doctorProfile >>>>",data.doctorProfile)  //{profileName,firstName, lastName,description, profileImage,...}
         socket
             .to(onlineProviders[data.providerId])
             .emit('acceptChat', { newRoom, doctorProfile: data.doctorProfile,doctorId:data.doctorId }) 
@@ -55,8 +55,8 @@ io.on('connection', (socket) => {
         //     to: 'provider',
         //     from: 'doctor',
         // }
-        console.log('Doctor sendsconversation===>>>', data.conversation) //{ message: "i'm a doctor", to: 'provider', from: 'doctor' }
-        console.log('room===>>>', data.room) // 1:1
+        // console.log('Doctor sendsconversation===>>>', data.conversation) //{ message: "i'm a doctor", to: 'provider', from: 'doctor' }
+        // console.log('room===>>>', data.room) // 1:1
 
         socket.to(data.room).emit('providerGetMessage', {
             conversation: data.conversation,
