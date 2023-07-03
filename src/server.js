@@ -14,14 +14,14 @@ const onlineDoctors = {}
 
 io.use((socket, next) => {
     socket.userId = socket.handshake.auth.user.id
-
     socket.role = socket.handshake.auth.role
+
     socket.user = socket.handshake.auth.user
     // console.log(socket.handshake.auth)
-    if (socket.role == 'doctor') {
+    if (socket.user.role == 'doctor') {
         const doctorId = socket.user.id
         onlineDoctors[doctorId] = socket.id
-    } else if (socket.role == 'provider') {
+    } else if (socket.user.role == 'provider') {
         const providerId = socket.user.id
         onlineProviders[providerId] = socket.id
     }
@@ -38,9 +38,10 @@ io.on('connection', (socket) => {
         // console.log('newRoom ====>>', newRoom)
         // console.log('onlineProviders===>>>', onlineProviders)//{ '1': 'nmmHycRn4JzElAXcAAAL' }
         // console.log('onlineDoctors===>>>', onlineDoctors)// { '1': '6OBIqs1bCraSogTmAAAN' }
+        console.log("data.doctor>>>>",data.doctorProfile)  //{profileName,firstName, lastName,description, profileImage,...}
         socket
             .to(onlineProviders[data.providerId])
-            .emit('acceptChat', { newRoom, doctorId: data.doctorId })
+            .emit('acceptChat', { newRoom, doctorProfile: data.doctorProfile,doctorId:data.doctorId }) 
     })
     socket.on('providerJoinRoom', (newRoom) => {
         // console.log("providerJoinRoom===>",newRoom)// run as 1:1
@@ -72,8 +73,8 @@ io.on('connection', (socket) => {
     })
     socket.on('disconnect', () => {
         console.log('before delete user', onlineProviders)
-        if (socket.role == 'provider') delete onlineProviders[socket.user.id]
-        else if (socket.role == 'doctor') delete onlineDoctors[socket.user.id]
+        if (socket.user.role == 'provider') delete onlineProviders[socket.user.id]
+        else if (socket.user.role == 'doctor') delete onlineDoctors[socket.user.id]
         // console.log('Disconnect socket id: ', onlineProviders[socket.userId])
         // console.log('after delete user', onlineProviders)
     })
