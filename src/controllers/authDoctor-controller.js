@@ -89,5 +89,10 @@ exports.logingoogle = async (req, res, next) => {
 }
 
 exports.getMe = (req, res, next) => {
-    res.status(200).json({ id: req.user.id, role: req.user.role })
+    res.status(200).json({
+        id: req.user.id,
+        role: req.user.role,
+        name: req.user?.profileName,
+        profileImage: req.user.profileImage,
+    })
 }
