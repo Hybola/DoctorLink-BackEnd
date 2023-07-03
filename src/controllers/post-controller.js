@@ -1,5 +1,6 @@
 // postcontroller
 const postService = require('../services/post-service')
+const mapJobPost = require('../utils/mapJobPost')
 
 exports.createpost = async (req, res, next) => {
     const value = req.body
@@ -63,3 +64,34 @@ exports.getpostbyid = async (req, res, next) => {
 }
 // exports.deletepost = (req, res, next) => {}
 // exports.editpost = (req, res, next) => {}
+
+exports.doctorGetPostbyProviderId = async (req, res, next) => {
+    try {
+        const { providerId } = req.params
+        const postbyProviderId = await postService.doctorGetPostbyProviderId(
+            providerId
+        )
+        const postObj = JSON.parse(JSON.stringify(postbyProviderId))
+
+        const result = mapJobPost(postObj, req.user.id)
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.doctorGetPostById = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const post = await postService.doctorGetPostById(id)
+        const postObj = JSON.parse(JSON.stringify(post))
+        
+
+        const result = mapJobPost(postObj, req.user.id)
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}

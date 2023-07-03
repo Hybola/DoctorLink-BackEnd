@@ -1,4 +1,11 @@
-const { JobPost, FullTime, PartTime } = require('../models')
+const {
+    JobPost,
+    FullTime,
+    PartTime,
+    DoctorJob,
+    Province,
+    Provider,
+} = require('../models')
 
 const { Op } = require('sequelize')
 
@@ -59,3 +66,47 @@ exports.filterJob = (filterObject) => {
     })
     return searchingWaytwo
 }
+
+exports.doctorGetPostbyProviderId = (providerId) =>
+    JobPost.findAll({
+        where: { providerId: providerId, stage: 1 },
+        include: [
+            {
+                model: DoctorJob,
+            },
+            {
+                model: Province,
+            },
+            {
+                model: Provider,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
+            },
+        ],
+    })
+
+exports.doctorGetPostById = (postId) =>
+    JobPost.findAll({
+        where: { id: postId, stage: 1 },
+        include: [
+            {
+                model: DoctorJob,
+            },
+            {
+                model: Province,
+            },
+            {
+                model: Provider,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: FullTime,
+            },
+        ],
+    })
