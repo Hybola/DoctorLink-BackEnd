@@ -27,7 +27,8 @@ const main = async () => {
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895674332',
-            profileImage: 'https://picsum.photos/200/300',
+            profileImage:
+                'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenseNumber: '123456789',
             thainationalId: '1234567890123',
             coverImage:
@@ -46,7 +47,8 @@ const main = async () => {
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895671332',
-            profileImage: 'https://picsum.photos/200/300',
+            profileImage:
+                'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenseNumber: '123456789',
             thainationalId: '1234567890123',
             coverImage:
@@ -65,7 +67,8 @@ const main = async () => {
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895624332',
-            profileImage: 'https://picsum.photos/200/300',
+            profileImage:
+                'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenseNumber: '123456789',
             thainationalId: '1234567890123',
             coverImage:
@@ -84,7 +87,8 @@ const main = async () => {
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895673332',
-            profileImage: 'https://picsum.photos/200/300',
+            profileImage:
+                'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenseNumber: '123456789',
             thainationalId: '1234567890123',
             coverImage:
@@ -103,7 +107,8 @@ const main = async () => {
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             mobile: '0895474332',
-            profileImage: 'https://picsum.photos/200/300',
+            profileImage:
+                'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenseNumber: '123456789',
             thainationalId: '1234567890123',
             coverImage:
@@ -135,7 +140,7 @@ const main = async () => {
             providerName: 'Naeramit Clinic',
             description: 'A clinic in  Uthai Thani \n#minimal ',
             profileImage:
-                'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687720119/kkyme39awgwcc51rthli.png',
+                'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
             coverImage:
                 'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687810604/sddfeye88csyjocvfabl.png',
             address: '539 ม.3',
@@ -154,7 +159,7 @@ const main = async () => {
             providerName: 'Naeramit Hospital',
             description: 'A Hospital in  Uthai Thani \n#minimal ',
             profileImage:
-                'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687720119/kkyme39awgwcc51rthli.png',
+                'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
             coverImage:
                 'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687810604/sddfeye88csyjocvfabl.png',
             address: '762 ม.3',
@@ -261,6 +266,38 @@ const main = async () => {
             stage: 1,
             providerId: 1,
         },
+        {
+            id: 7,
+            title: 'ต้องการหมอ 1 คน',
+            location: 'กรุงเทพ  ปทุมวัน',
+            map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
+            line: '@nuc',
+            phone: '0817518953',
+            startDate: '2023-05-02',
+            endDate: '2023-06-28',
+            wage: '20000',
+            provinceId: '1',
+            jobType: 'PartTime',
+            status: 'inactive',
+            stage: 1,
+            providerId: 1,
+        },
+        {
+            id: 8,
+            title: 'ต้องการหมอ 3 คน',
+            location: 'กรุงเทพ  คลองเตย',
+            map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
+            line: '@sukumtsu',
+            phone: '0817518953',
+            startDate: '2023-05-02',
+            endDate: '2023-06-28',
+            wage: '20000',
+            provinceId: '1',
+            jobType: 'FullTime',
+            status: 'inactive',
+            stage: 1,
+            providerId: 1,
+        },
     ])
     await FullTime.bulkCreate([
         {
@@ -325,12 +362,19 @@ const main = async () => {
         },
     ])
 
-    // await Follow.bulkCreate([{}])
     await DoctorJob.bulkCreate([
         { id: 1, status: 1, jobPostId: 1, doctorId: 1 },
         { id: 2, status: 2, jobPostId: 2, doctorId: 1 },
         { id: 3, status: 2, jobPostId: 3, doctorId: 1 },
         { id: 4, status: 3, jobPostId: 4, doctorId: 1 },
+    ])
+
+    await Follow.bulkCreate([
+        { id: 1, status: 1, doctorId: 1, providerId: 1 },
+        { id: 2, status: 1, doctorId: 2, providerId: 1 },
+        { id: 3, status: 1, doctorId: 3, providerId: 1 },
+        { id: 4, status: 1, doctorId: 3, providerId: 2 },
+        { id: 5, status: 1, doctorId: 4, providerId: 2 },
     ])
 
     process.exit()
