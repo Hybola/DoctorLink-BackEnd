@@ -41,7 +41,7 @@ app.use('/follow', followRoute)
 app.use('/myjob', authenticate, authenticateDoctor, myJobRoute)
 
 app.use('/history', historyRoute)
-app.use('/post', authenticate, postRoute)
+app.use('/post', postRoute)
 ////===== Test for feature Chat======
 app.use('/test', (req, res) => {
     res.json(req.body)

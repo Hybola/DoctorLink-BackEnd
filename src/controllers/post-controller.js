@@ -29,22 +29,23 @@ exports.getAllPost = async (req, res, next) => {
 }
 
 exports.filterJob = async (req, res, next) => {
-    const filterObject = req.body
-
-    if (req.body.location.trim() == '') {
-        const filterJob = await postService.filterJob(filterObject)
-        res.json(filterJob)
-        console.log(filterJob)
-    } else {
-        const filterJobFixLocation = await postService.filterJobFixLocation(
-            filterObject
-        )
-        res.json(filterJobFixLocation)
-        console.log(filterJobFixLocation)
+    try {
+        console.log(req.body)
+        const filterObject = req.body
+        if (req.body.provinceId == '') {
+            const filterJob = await postService.filterJob(filterObject)
+            res.json(filterJob)
+        } else {
+            const filterJobFixLocation = await postService.filterJobFixLocation(
+                filterObject
+            )
+            res.json(filterJobFixLocation)
+        }
+    } catch (err) {
+        next(err)
     }
 }
 
-// exports.getpostbyid = (req, res, next) => {}
 exports.getallpost = async (req, res, next) => {
     const getall = await postService.getall({
         attributes: {

@@ -3,7 +3,7 @@ const postController = require('../controllers/post-controller')
 const authenticate = require('../middlewares/authenticate')
 const router = express.Router()
 
-router.post('/createpost', postController.createpost)
+router.post('/createpost', authenticate, postController.createpost)
 router.get('/getallpost', postController.getAllPost)
 router.post('/filterjob', postController.filterJob)
 
