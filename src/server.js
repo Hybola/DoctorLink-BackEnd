@@ -11,6 +11,7 @@ const io = new Server(server, {
 ////========= Chee's Code
 const onlineProviders = {}
 const onlineDoctors = {}
+const chatRooms = {} //Key is room id, value is array of {conversation}
 
 io.use((socket, next) => {
     socket.userId = socket.handshake.auth.user.id
@@ -32,16 +33,16 @@ io.use((socket, next) => {
 
 io.on('connection', (socket) => {
     socket.on('startChat', (data) => {
-        const newRoom = `${data.doctorId}:${data.providerId}`
+        const newRoom = `${data.doctor.id}:${data.providerId}`
         socket.join(newRoom)
 
         // console.log('newRoom ====>>', newRoom)
         // console.log('onlineProviders===>>>', onlineProviders)//{ '1': 'nmmHycRn4JzElAXcAAAL' }
         // console.log('onlineDoctors===>>>', onlineDoctors)// { '1': '6OBIqs1bCraSogTmAAAN' }
-        console.log("data.doctorProfile >>>>",data.doctorProfile)  //{profileName,firstName, lastName,description, profileImage,...}
+        // console.log('data.doctor >>>>', data.doctor) //{profileName,firstName, lastName,description, profileImage,...}
         socket
             .to(onlineProviders[data.providerId])
-            .emit('acceptChat', { newRoom, doctorProfile: data.doctorProfile,doctorId:data.doctorId }) 
+            .emit('acceptChat', { newRoom, doctor: data.doctor })
     })
     socket.on('providerJoinRoom', (newRoom) => {
         // console.log("providerJoinRoom===>",newRoom)// run as 1:1
@@ -57,6 +58,11 @@ io.on('connection', (socket) => {
         // }
         // console.log('Doctor sendsconversation===>>>', data.conversation) //{ message: "i'm a doctor", to: 'provider', from: 'doctor' }
         // console.log('room===>>>', data.room) // 1:1
+        if (chatRooms[data.room]?.length )
+         chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+        else chatRooms[data.room] = [data.conversation]
+
+        // console.log('ChatRooms[data.room] >>>', chatRooms[data.room])
 
         socket.to(data.room).emit('providerGetMessage', {
             conversation: data.conversation,
@@ -67,14 +73,27 @@ io.on('connection', (socket) => {
     socket.on('providerSendMessage', (data) => {
         // console.log('providerSendMessage to room:', data.room)
         // console.log('with Conversation:', data.conversation)
+        if (chatRooms[data.room]?.length )
+        chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+       else chatRooms[data.room] = [data.conversation]
+
         socket
             .to(data.room)
             .emit('doctorGetMessage', { conversation: data.conversation })
     })
+
+    socket.on('requestOldConversation', (data) => {
+        socket.to(data.room).emit('getOldConversation', {
+            arrayConversatoin: chatRooms[data.room],
+        })
+    })
+
     socket.on('disconnect', () => {
         console.log('before delete user', onlineProviders)
-        if (socket.user.role == 'provider') delete onlineProviders[socket.user.id]
-        else if (socket.user.role == 'doctor') delete onlineDoctors[socket.user.id]
+        if (socket.user.role == 'provider')
+            delete onlineProviders[socket.user.id]
+        else if (socket.user.role == 'doctor')
+            delete onlineDoctors[socket.user.id]
         // console.log('Disconnect socket id: ', onlineProviders[socket.userId])
         // console.log('after delete user', onlineProviders)
     })
