@@ -65,10 +65,11 @@ exports.getpostbyid = async (req, res, next) => {
 // exports.deletepost = (req, res, next) => {}
 // exports.editpost = (req, res, next) => {}
 
-exports.doctorGetPostbyProviderId = async (req, res, next) => {
+exports.getPostbyProviderId = async (req, res, next) => {
     try {
         const { providerId } = req.params
-        const postbyProviderId = await postService.doctorGetPostbyProviderId(
+
+        const postbyProviderId = await postService.getPostbyProviderId(
             providerId
         )
         const postObj = JSON.parse(JSON.stringify(postbyProviderId))
@@ -81,12 +82,11 @@ exports.doctorGetPostbyProviderId = async (req, res, next) => {
     }
 }
 
-exports.doctorGetPostById = async (req, res, next) => {
+exports.getPostById = async (req, res, next) => {
     try {
         const { id } = req.params
-        const post = await postService.doctorGetPostById(id)
+        const post = await postService.getPostById(id)
         const postObj = JSON.parse(JSON.stringify(post))
-        
 
         const result = mapJobPost(postObj, req.user.id)
 
