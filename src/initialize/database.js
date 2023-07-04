@@ -322,7 +322,7 @@ const main = async () => {
         },
     ])
     await DoctorJob.bulkCreate([
-        { id: 1, status: 1, jobPostId: 1, doctorId: 1 },
+        { id: 1, status: 3, jobPostId: 1, doctorId: 1 },
         { id: 2, status: 1, jobPostId: 2, doctorId: 1 },
         { id: 3, status: 1, jobPostId: 1, doctorId: 2 },
         { id: 4, status: 1, jobPostId: 2, doctorId: 2 },
