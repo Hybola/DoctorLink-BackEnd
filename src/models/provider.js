@@ -23,8 +23,16 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
             description: DataTypes.STRING,
-            profileImage: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            profileImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://img.freepik.com/free-vector/people-walking-sitting-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000',
+            },
+            coverImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://study.com/cimages/videopreview/7hfyoyse54.jpg',
+            },
             lineId: DataTypes.STRING,
             googleMap: DataTypes.STRING,
             address: DataTypes.STRING,
