@@ -24,4 +24,9 @@ router.post(
     authenticate,
     historyController.updateSelectedDoctor
 )
+router.patch(
+    '/editjobpost/:postId',
+    authenticate,
+    historyController.EditJobPostByPostId
+)
 module.exports = router

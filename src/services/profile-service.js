@@ -7,13 +7,18 @@ exports.getDoctorProfileById = (id) =>
             id,
         },
         attributes: [
-            'id',
             'profileName',
+            'firstName',
+            'lastName',
             'description',
             'profileImage',
             'coverImage',
             'mobile',
             'lineId',
+            'gender',
+            'birthDate',
+            'education',
+            'workExperience',
         ],
     })
 
@@ -27,7 +32,6 @@ exports.getProviderProfileById = (id) =>
             attributes: ['name'],
         },
         attributes: [
-            'id',
             'providerName',
             'description',
             'profileImage',
@@ -58,3 +62,28 @@ exports.editProviderProfileById = (payload, id) =>
             id: id,
         },
     })
+
+exports.getProvince = () => Province.findAll()
+
+exports.checkFollowed = (doctorId, providerId) =>
+    Follow.findAll({ where: { doctorId: doctorId, providerId: providerId } })
+
+exports.doctorFollowed = (doctorId, providerId) =>
+    Follow.findAll({
+        where: { doctorId: doctorId, providerId: providerId, status: 1 },
+    })
+
+exports.createfollowProvider = (doctorId, providerId) =>
+    Follow.create({ doctorId, providerId, status: 1 })
+
+exports.updateFollowProvider = (doctorId, providerId) =>
+    Follow.update(
+        { status: 1 },
+        { where: { doctorId: doctorId, providerId: providerId } }
+    )
+
+exports.unFollow = (doctorId, providerId) =>
+    Follow.update(
+        { status: 0 },
+        { where: { doctorId: doctorId, providerId: providerId } }
+    )

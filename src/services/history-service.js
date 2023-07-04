@@ -92,7 +92,7 @@ exports.getJobById = async (jobId) => {
 
 exports.getCloseJob = async (jobId, stage) => {
     return await JobPost.update(
-        { stage: stage },
+        { stage: stage, status: 'inactive' },
         {
             where: {
                 id: jobId,
@@ -100,3 +100,23 @@ exports.getCloseJob = async (jobId, stage) => {
         }
     )
 }
+exports.editJobPost = (jobPostPayload, jobPostId) =>
+    JobPost.update(jobPostPayload, {
+        where: {
+            id: jobPostId,
+        },
+    })
+
+exports.editFullTime = (jobPostPayload, jobPostId) =>
+    FullTime.update(jobPostPayload, {
+        where: {
+            jobPostId: jobPostId,
+        },
+    })
+
+exports.editPartTime = (jobPostPayload, jobPostId) =>
+    PartTime.update(jobPostPayload, {
+        where: {
+            jobPostId: jobPostId,
+        },
+    })

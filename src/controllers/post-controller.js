@@ -1,11 +1,11 @@
 // postcontroller
 const postService = require('../services/post-service')
+const mapJobPost = require('../utils/mapJobPost')
 
 exports.createpost = async (req, res, next) => {
     const value = req.body
     value.providerId = req.user.id
-
-    console.log(value)
+    value.status = 1
 
     const post = await postService.newpost(value)
     console.log(post)
@@ -30,23 +30,22 @@ exports.getAllPost = async (req, res, next) => {
 }
 
 exports.filterJob = async (req, res, next) => {
-    const filterObject = req.body
-    console.log(req.body)
-
-    if (req.body.location.trim() == '') {
-        const filterJob = await postService.filterJob(filterObject)
-        res.json(filterJob)
-        console.log(filterJob)
-    } else {
-        const filterJobFixLocation = await postService.filterJobFixLocation(
-            filterObject
-        )
-        res.json(filterJobFixLocation)
-        console.log(filterJobFixLocation)
+    try {
+        const filterObject = req.body
+        if (req.body.provinceId == '') {
+            const filterJob = await postService.filterJob(filterObject)
+            res.json(filterJob)
+        } else {
+            const filterJobFixLocation = await postService.filterJobFixLocation(
+                filterObject
+            )
+            res.json(filterJobFixLocation)
+        }
+    } catch (err) {
+        next(err)
     }
 }
 
-// exports.getpostbyid = (req, res, next) => {}
 exports.getallpost = async (req, res, next) => {
     const getall = await postService.getall({
         attributes: {
@@ -64,3 +63,48 @@ exports.getpostbyid = async (req, res, next) => {
 }
 // exports.deletepost = (req, res, next) => {}
 // exports.editpost = (req, res, next) => {}
+
+exports.getPostbyProviderId = async (req, res, next) => {
+    try {
+        const { providerId } = req.params
+
+        const postbyProviderId = await postService.getPostbyProviderId(
+            providerId
+        )
+        const postObj = JSON.parse(JSON.stringify(postbyProviderId))
+
+        const result = mapJobPost(postObj, req.user.id)
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.getPostById = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const post = await postService.getPostById(id)
+        const postObj = JSON.parse(JSON.stringify(post))
+
+        const result = mapJobPost(postObj, req.user.id)
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.getPostByIdForGuest = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const post = await postService.getPostById(id)
+        const postObj = JSON.parse(JSON.stringify(post))
+
+        const result = mapJobPost(postObj, '')
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
