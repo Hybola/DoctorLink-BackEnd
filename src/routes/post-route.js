@@ -10,12 +10,13 @@ router.get('/getallpost', postController.getAllPost)
 router.post('/filterjob', postController.filterJob)
 
 router.get(
-    '/provider/:providerId',
+    '/user/provider/:providerId',
     authenticate,
     postController.getPostbyProviderId
 )
 
-router.get('/:id/', authenticate, postController.getPostById)
+router.get('/guest/:id', postController.getPostByIdForGuest)
+router.get('/user/:id/', authenticate, postController.getPostById)
 // router.delete('/delete', postController.deletepost)
 // router.put('/editpost', postController.editpost)
 
