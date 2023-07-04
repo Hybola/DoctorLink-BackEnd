@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         'PartTime',
         {
             jobDes: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(4000),
             },
             startDate: {
                 type: DataTypes.DATE,
