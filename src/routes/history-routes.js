@@ -17,7 +17,13 @@ const authenticate = require('../middlewares/authenticate')
 // router.get('/provider/me', authenticate, authProviderController.getMe)
 // router.get('/doctor/me', authenticate, authDoctorController.getMe)
 router.get('/lists', authenticate, historyController.getListsById)
-
+router.get('/job', authenticate, historyController.getJobById)
+router.get('/closejob', authenticate, historyController.getCloseJob)
+router.post(
+    '/update-selected-doctor',
+    authenticate,
+    historyController.updateSelectedDoctor
+)
 router.patch(
     '/editjobpost/:postId',
     authenticate,
