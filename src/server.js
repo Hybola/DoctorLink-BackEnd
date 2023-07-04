@@ -82,12 +82,7 @@ io.on('connection', (socket) => {
             .emit('doctorGetMessage', { conversation: data.conversation })
     })
 
-    socket.on('requestOldConversation', (data) => {
-        socket.to(data.room).emit('getOldConversation', {
-            arrayConversatoin: chatRooms[data.room],
-        })
-    })
-
+  
     socket.on('disconnect', () => {
         console.log('before delete user', onlineProviders)
         if (socket.user.role == 'provider')
