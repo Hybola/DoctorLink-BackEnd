@@ -114,17 +114,18 @@ const main = async () => {
         },
     ])
     await Province.bulkCreate([
-        { id: 1, abbrievation: 'BKK', name: 'Bangkok' },
-        { id: 2, abbrievation: 'PTE', name: 'Phatumthani' },
-        { id: 3, abbrievation: 'CMI', name: 'Chiangmai' },
-        { id: 4, abbrievation: 'CBI', name: 'Chonburi' },
-        { id: 5, abbrievation: 'PKT', name: 'Phuket' },
-        { id: 6, abbrievation: 'RYG', name: 'Rayong' },
-        { id: 7, abbrievation: 'KKN', name: 'Khonkaen' },
-        { id: 8, abbrievation: 'CCO', name: 'Chachoengsao' },
-        { id: 9, abbrievation: 'SKN', name: 'Samutsakhon' },
-        { id: 10, abbrievation: 'AYA', name: 'Ayuthaya' },
-        { id: 11, abbrievation: 'NBI', name: 'Nonthaburi' },
+        { id: 1, abbrievation: 'ETC', name: 'Other' },
+        { id: 2, abbrievation: 'BKK', name: 'Bangkok' },
+        { id: 3, abbrievation: 'PTE', name: 'Phatumthani' },
+        { id: 4, abbrievation: 'CMI', name: 'Chiangmai' },
+        { id: 5, abbrievation: 'CBI', name: 'Chonburi' },
+        { id: 6, abbrievation: 'PKT', name: 'Phuket' },
+        { id: 7, abbrievation: 'RYG', name: 'Rayong' },
+        { id: 8, abbrievation: 'KKN', name: 'Khonkaen' },
+        { id: 9, abbrievation: 'CCO', name: 'Chachoengsao' },
+        { id: 10, abbrievation: 'SKN', name: 'Samutsakhon' },
+        { id: 11, abbrievation: 'AYA', name: 'Ayuthaya' },
+        { id: 12, abbrievation: 'NBI', name: 'Nonthaburi' },
     ])
     await Provider.bulkCreate([
         {
