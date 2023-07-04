@@ -251,9 +251,9 @@ const main = async () => {
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             providerName: 'Naeramit Clinic',
             description: 'A clinic in Uthai Thani \n#minimal ',
-            profileImage:'https://images.unsplash.com/photo-1587351021355-a479a299d2f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG9zcGl0YWwlMjBidWlsZGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
-            coverImage:
-                'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687810604/sddfeye88csyjocvfabl.png',
+            profileImage:
+                'https://img.freepik.com/free-vector/people-walking-sitting-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000',
+            coverImage: 'https://study.com/cimages/videopreview/7hfyoyse54.jpg',
             address: '539 ม.3',
             provinceId: null,
             googleMap: 'https://goo.gl/maps/nkSAbhnh6mArW8tG6',
@@ -269,10 +269,11 @@ const main = async () => {
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
             providerName: 'Naeramit Hospital',
             description: 'A Hospital in Thailand \n#minimal ',
-            profileImage:'https://images.unsplash.com/photo-1607838720191-0d8eba3e9040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGhvc3BpdGFsJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60',
+            profileImage:
+                'https://media.istockphoto.com/id/1344779917/vector/medical-center-hospital-building-vector-design.jpg?s=612x612&w=0&k=20&c=_sZByueZhEZbK2WjQz1jqXy1_Rr5jYkgiVBj-2ls44s=',
             coverImage:
-                'https://res.cloudinary.com/dbhkkoqkt/image/upload/v1687810604/sddfeye88csyjocvfabl.png',
-            address: '762 ม.3',
+                'https://www.wfyi.org/files/wfyi/articles/original/pexels-pixabay-263402.jpg',
+            address: '762 ม.8',
             provinceId: null,
             googleMap: 'https://goo.gl/maps/RjpyR5uvw26nTzAF9',
             mobile: '08956743223',
