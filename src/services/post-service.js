@@ -20,6 +20,9 @@ exports.getAllPost = () =>
             { model: PartTime },
             { model: Provider },
         ],
+        where: {
+            stage: 1,
+        },
     })
 
 exports.filterJobFixLocation = (filterObject) => {
