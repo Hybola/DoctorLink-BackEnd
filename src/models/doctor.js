@@ -26,10 +26,21 @@ module.exports = (sequelize, DataTypes) => {
             mobile: {
                 type: DataTypes.STRING,
             },
-            profileImage: DataTypes.STRING,
+            mobile: {
+                type: DataTypes.STRING,
+            },
+            profileImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://www.humanitas.net/content/uploads/2017/10/doctors.jpg',
+            },
             licenceNumber: DataTypes.STRING,
             thainationalId: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            coverImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://www.vivertechnologies.com/images/hospital2.jpg',
+            },
             description: DataTypes.STRING,
             lineId: DataTypes.STRING,
             gender: DataTypes.INTEGER,
