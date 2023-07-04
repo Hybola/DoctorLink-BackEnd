@@ -31,7 +31,6 @@ exports.getAllPost = async (req, res, next) => {
 
 exports.filterJob = async (req, res, next) => {
     try {
-        console.log(req.body)
         const filterObject = req.body
         if (req.body.provinceId == '') {
             const filterJob = await postService.filterJob(filterObject)
@@ -89,6 +88,20 @@ exports.getPostById = async (req, res, next) => {
         const postObj = JSON.parse(JSON.stringify(post))
 
         const result = mapJobPost(postObj, req.user.id)
+
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
+}
+
+exports.getPostByIdForGuest = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const post = await postService.getPostById(id)
+        const postObj = JSON.parse(JSON.stringify(post))
+
+        const result = mapJobPost(postObj, '')
 
         res.status(200).json(result)
     } catch (err) {
