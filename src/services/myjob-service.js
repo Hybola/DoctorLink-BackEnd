@@ -67,6 +67,17 @@ exports.unSavedJobById = (id) =>
         }
     )
 
+exports.updateSavedJob = (doctorId, jobPostId) =>
+    DoctorJob.update(
+        { status: 1 },
+        {
+            where: {
+                doctorId,
+                jobPostId,
+            },
+        }
+    )
+
 // InterestJob
 
 exports.interestJob = (payload) => DoctorJob.create(payload)
