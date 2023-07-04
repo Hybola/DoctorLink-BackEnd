@@ -17,4 +17,10 @@ const authenticate = require('../middlewares/authenticate')
 // router.get('/provider/me', authenticate, authProviderController.getMe)
 // router.get('/doctor/me', authenticate, authDoctorController.getMe)
 router.get('/lists', authenticate, historyController.getListsById)
+
+router.patch(
+    '/editjobpost/:postId',
+    authenticate,
+    historyController.EditJobPostByPostId
+)
 module.exports = router

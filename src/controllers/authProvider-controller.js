@@ -95,5 +95,6 @@ exports.getMe = (req, res, next) => {
         role: req.user.role,
         name: req.user?.providerName,
         profileImage: req.user.profileImage,
+        coverImage: req.user.coverImage,
     })
 }

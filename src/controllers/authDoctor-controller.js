@@ -20,7 +20,7 @@ exports.register = async (req, res, next) => {
 
         const user = await doctorService.createUser(value)
 
-        const accessToken = tokenService.sign({ id: user.id, role: 'doctor' })
+        const accessToken = tokenService.sign({ id: user.id, role: 'doctor'})
         res.status(200).json({ accessToken })
     } catch (err) {
         next(err)

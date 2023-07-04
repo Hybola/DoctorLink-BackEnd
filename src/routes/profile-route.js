@@ -37,6 +37,22 @@ router.patch(
 router.get('/provider/:id', profileController.getProviderProfileById)
 router.get('/doctor/:id', profileController.getDoctorProfileById)
 router.get('/province', profileController.getProvince)
-
-
+router.get(
+    '/doctorfollow/:providerId',
+    authenticate,
+    doctorAuthenticate,
+    profileController.doctorFollow
+)
+router.post(
+    '/follow/:providerId',
+    authenticate,
+    doctorAuthenticate,
+    profileController.followProvider
+)
+router.post(
+    '/unfollow/:providerId',
+    authenticate,
+    doctorAuthenticate,
+    profileController.unfollowProvider
+)
 module.exports = router

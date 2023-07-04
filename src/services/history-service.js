@@ -52,3 +52,24 @@ exports.getHistoryFullTimeById = async (providerId) => {
         },
     })
 }
+
+exports.editJobPost = (jobPostPayload, jobPostId) =>
+    JobPost.update(jobPostPayload, {
+        where: {
+            id: jobPostId,
+        },
+    })
+
+exports.editFullTime = (jobPostPayload, jobPostId) =>
+    FullTime.update(jobPostPayload, {
+        where: {
+            jobPostId: jobPostId,
+        },
+    })
+
+exports.editPartTime = (jobPostPayload, jobPostId) =>
+    PartTime.update(jobPostPayload, {
+        where: {
+            jobPostId: jobPostId,
+        },
+    })
