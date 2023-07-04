@@ -27,20 +27,44 @@ exports.getListsById = async (req, res, next) => {
         console.log(err)
         res.status(200).json(err)
     }
+}
 
-    // value.providerId = req.user.id
+exports.updateSelectedDoctor = async (req, res, next) => {
+    const value = req.body
+    console.log(value.id, value.status)
+    try {
+        const query = await historyService.updateSelectedDoctor(
+            value.id,
+            value.status
+        )
+        res.status(200).json(query)
+    } catch (err) {
+        console.log(err)
+        res.status(200).json(err)
+    }
+}
 
-    // const post = await postService.newpost(value)
-    // console.log(post)
-    // value.jobPostId = post.id
-    // if (req.body.jobType === 'FullTime') {
-    //     console.log(value)
-    //     const full = await postService.newfull(value)
-    //     res.status(200).json({ full, post })
-    // } else {
-    //     const part = await postService.newpart(value)
-    //     res.status(200).json({ part, post })
-    // }
+exports.getJobById = async (req, res, next) => {
+    const value = req.query
+    console.log(value)
+    try {
+        const query = await historyService.getJobById(value.id)
+        res.status(200).json(query)
+    } catch (err) {
+        console.log(err)
+        res.status(200).json(err)
+    }
+}
+exports.getCloseJob = async (req, res, next) => {
+    const value = req.query
+    console.log(value)
+    try {
+        const query = await historyService.getCloseJob(value.id, value.stage)
+        res.status(200).json(query)
+    } catch (err) {
+        console.log(err)
+        res.status(200).json(err)
+    }
 }
 
 exports.EditJobPostByPostId = async (req, res, next) => {
@@ -66,7 +90,15 @@ exports.EditJobPostByPostId = async (req, res, next) => {
         )
 
         if (jobType == 'FullTime') {
-            const { jobDes, startDate, salary, other } = FullTime
+            const {
+                jobDes,
+                startDate,
+                salary,
+                other,
+                workingDay,
+                annual,
+                benefit,
+            } = FullTime
             const fullTimePayload = {
                 jobDes,
                 workingDay,

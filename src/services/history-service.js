@@ -1,3 +1,4 @@
+const e = require('express')
 const {
     Provider,
     PartTime,
@@ -7,6 +8,18 @@ const {
     Doctor,
 } = require('../models')
 const { Op } = require('sequelize')
+
+exports.updateSelectedDoctor = async (id, status) => {
+    const query = await DoctorJob.update(
+        { status: status },
+        {
+            where: {
+                id: id,
+            },
+        }
+    )
+    return query
+}
 
 exports.getHistoryPartTimeById = async (providerId) => {
     return await JobPost.findAll({
@@ -53,6 +66,40 @@ exports.getHistoryFullTimeById = async (providerId) => {
     })
 }
 
+exports.getJobById = async (jobId) => {
+    return await JobPost.findAll({
+        include: [
+            {
+                model: FullTime,
+            },
+            {
+                model: PartTime,
+            },
+            {
+                model: DoctorJob,
+                include: [
+                    {
+                        model: Doctor,
+                    },
+                ],
+            },
+        ],
+        where: {
+            id: jobId,
+        },
+    })
+}
+
+exports.getCloseJob = async (jobId, stage) => {
+    return await JobPost.update(
+        { stage: stage, status: 'inactive' },
+        {
+            where: {
+                id: jobId,
+            },
+        }
+    )
+}
 exports.editJobPost = (jobPostPayload, jobPostId) =>
     JobPost.update(jobPostPayload, {
         where: {
