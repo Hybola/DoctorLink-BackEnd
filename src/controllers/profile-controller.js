@@ -5,8 +5,7 @@ const uploadService = require('../services/upload-service')
 exports.editMyProfile = async (req, res, next) => {
     try {
         const { id, role } = req.user
-        const payload = req.body
-        // console.log(payload)
+        console.log(payload)
 
         if (role == 'doctor') {
             const rs = await profileService.editDoctorProfileById(payload, id)
