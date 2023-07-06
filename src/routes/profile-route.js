@@ -40,7 +40,6 @@ router.get('/province', profileController.getProvince)
 router.get(
     '/doctorfollow/:providerId',
     authenticate,
-    doctorAuthenticate,
     profileController.doctorFollow
 )
 router.post(
