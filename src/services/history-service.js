@@ -6,6 +6,7 @@ const {
     JobPost,
     DoctorJob,
     Doctor,
+    Province,
 } = require('../models')
 const { Op } = require('sequelize')
 
@@ -83,6 +84,9 @@ exports.getJobById = async (jobId) => {
                     },
                 ],
             },
+            {
+                model: Province,
+            },
         ],
         where: {
             id: jobId,
@@ -120,3 +124,17 @@ exports.editPartTime = (jobPostPayload, jobPostId) =>
             jobPostId: jobPostId,
         },
     })
+
+exports.getProviderProfileById = async (providerId) => {
+    return await Provider.findOne({
+        include: [
+            {
+                model: Province,
+            },
+        ],
+
+        where: {
+            id: providerId,
+        },
+    })
+}

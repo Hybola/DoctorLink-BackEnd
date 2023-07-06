@@ -128,3 +128,15 @@ exports.EditJobPostByPostId = async (req, res, next) => {
         next(err)
     }
 }
+
+exports.GetProviderProfile = async (req, res, next) => {
+    const value = req.query
+    console.log(value)
+    try {
+        const query = await historyService.getProviderProfileById(value.id)
+        res.status(200).json(query)
+    } catch (err) {
+        console.log(err)
+        res.status(200).json(err)
+    }
+}
