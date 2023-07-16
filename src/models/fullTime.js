@@ -3,21 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         'FullTime',
         {
             jobDes: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
+                type: DataTypes.STRING(4000),
             },
             workingDay: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             startDate: {
-                type: DataTypes.DATEONLY,
+                type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
@@ -32,24 +24,12 @@ module.exports = (sequelize, DataTypes) => {
             },
             annual: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             benefit: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             other: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
         },
         {
@@ -57,9 +37,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     FullTime.associate = (models) => {
-        FullTime.belongsTo(models.Post, {
+        FullTime.belongsTo(models.JobPost, {
             foreignKey: {
-                name: 'postId',
+                name: 'jobPostId',
                 allowNull: false,
             },
         })

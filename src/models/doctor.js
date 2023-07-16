@@ -4,20 +4,16 @@ module.exports = (sequelize, DataTypes) => {
         {
             firstName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             lastName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
+            },
+            profileName: {
+                type: DataTypes.STRING,
             },
             email: {
                 type: DataTypes.STRING,
+                allowNull: false,
                 unique: true,
                 validate: {
                     isEmail: true,
@@ -29,29 +25,44 @@ module.exports = (sequelize, DataTypes) => {
             },
             mobile: {
                 type: DataTypes.STRING,
-                unique: true,
-                validate: {
-                    is: /^[0-9]{10}$/,
-                },
             },
-            profileImage: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            mobile: {
+                type: DataTypes.STRING,
+            },
+            profileImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://www.humanitas.net/content/uploads/2017/10/doctors.jpg',
+            },
+            licenceNumber: DataTypes.STRING,
+            thainationalId: DataTypes.STRING,
+            coverImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://www.vivertechnologies.com/images/hospital2.jpg',
+            },
+            description: DataTypes.STRING,
+            lineId: DataTypes.STRING,
+            gender: DataTypes.INTEGER,
+            birthDate: DataTypes.DATEONLY,
+            education: DataTypes.STRING,
+            workExperience: DataTypes.STRING,
         },
         {
             underscored: true,
         }
     )
     Doctor.associate = (models) => {
-        Doctor.hasMany(models.DoctorInterestedJob, {
+        Doctor.hasMany(models.DoctorJob, {
             foreignKey: {
-                name: 'doctor_id',
+                name: 'doctorId',
                 allowNull: false,
             },
             onDelete: 'RESTRICT',
         })
-        Doctor.hasMany(models.DoctorFollowProvider, {
+        Doctor.hasMany(models.Follow, {
             foreignKey: {
-                name: 'doctor_id',
+                name: 'doctorId',
                 allowNull: false,
             },
             onDelete: 'RESTRICT',

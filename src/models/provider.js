@@ -13,29 +13,43 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            healthProviderName: {
+            providerName: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             mobile: {
                 type: DataTypes.STRING,
-                unique: true,
                 validate: {
                     is: /^[0-9]{10}$/,
                 },
             },
-            profileImage: DataTypes.STRING,
-            coverImage: DataTypes.STRING,
+            description: DataTypes.STRING,
+            profileImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://img.freepik.com/free-vector/people-walking-sitting-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000',
+            },
+            coverImage: {
+                type: DataTypes.STRING,
+                defaultValue:
+                    'https://study.com/cimages/videopreview/7hfyoyse54.jpg',
+            },
+            lineId: DataTypes.STRING,
+            googleMap: DataTypes.STRING,
+            address: DataTypes.STRING,
         },
         {
             underscored: true,
         }
     )
     Provider.associate = (models) => {
-        Provider.hasMany(models.Post, {
+        Provider.belongsTo(models.Province, {
+            foreignKey: {
+                name: 'provinceId',
+            },
+            onDelete: 'RESTRICT',
+        })
+
+        Provider.hasMany(models.JobPost, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
@@ -43,13 +57,20 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'RESTRICT',
         })
 
-        Provider.hasMany(models.DoctorFollowProvider, {
+        Provider.hasMany(models.Follow, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
             },
             onDelete: 'RESTRICT',
         })
+        // Provider.hasMany(models.JobInterest, {
+        //     foreignKey: {
+        //         name: 'providerId',
+        //         allowNull: false,
+        //     },
+        //     onDelete: 'RESTRICT',
+        // })
     }
     return Provider
 }

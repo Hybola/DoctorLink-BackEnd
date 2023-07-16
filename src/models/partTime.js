@@ -3,20 +3,16 @@ module.exports = (sequelize, DataTypes) => {
         'PartTime',
         {
             jobDes: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
+                type: DataTypes.STRING(4000),
             },
-            startDateTime: {
+            startDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
                     notEmpty: true,
                 },
             },
-            endDateTime: {
+            endDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
@@ -32,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             other: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
         },
         {
@@ -43,9 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
     PartTime.associate = (models) => {
-        PartTime.belongsTo(models.Post, {
+        PartTime.belongsTo(models.JobPost, {
             foreignKey: {
-                name: 'postId',
+                name: 'jobPostId',
                 allowNull: false,
             },
         })

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Post = sequelize.define(
-        'Post',
+    const JobPost = sequelize.define(
+        'JobPost',
         {
             title: {
                 type: DataTypes.STRING,
@@ -18,17 +18,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             map: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             line: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
             },
             jobType: {
                 type: DataTypes.ENUM('FullTime', 'PartTime'),
@@ -44,39 +36,64 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            status: {
+                type: DataTypes.ENUM('active', 'inactive'),
+                allowNull: false,
+                validate: {
+                    notEmpty: true,
+                },
+            },
+            stage: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                defaultValue: 1,
+                validate: {
+                    notEmpty: true,
+                },
+                //0=ยกเลิก 1=รออนุมัติ 2=อนุมัติ
+            },
         },
         {
             underscored: true,
         }
     )
-    Post.associate = (models) => {
-        Post.hasMany(models.PartTime, {
-            foreignKey: {
-                name: 'postId',
-                allowNull: false,
-            },
-        })
-
-        Post.hasMany(models.FullTime, {
-            foreignKey: {
-                name: 'postId',
-                allowNull: false,
-            },
-        })
-        Post.belongsTo(models.Provider, {
+    JobPost.associate = (models) => {
+        JobPost.belongsTo(models.Provider, {
             foreignKey: {
                 name: 'providerId',
                 allowNull: false,
             },
-            as: 'provider',
+            onDelete: 'RESTRICT',
         })
-        Post.hasMany(models.DoctorInterestedJob, {
+
+        JobPost.belongsTo(models.Province, {
             foreignKey: {
-                name: 'postId',
+                name: 'provinceId',
+                allowNull: false,
+            },
+            onDelete: 'RESTRICT',
+        })
+
+        JobPost.hasOne(models.PartTime, {
+            foreignKey: {
+                name: 'jobPostId',
+                allowNull: false,
+            },
+        })
+
+        JobPost.hasOne(models.FullTime, {
+            foreignKey: {
+                name: 'jobPostId',
+                allowNull: false,
+            },
+        })
+        JobPost.hasMany(models.DoctorJob, {
+            foreignKey: {
+                name: 'jobPostId',
                 allowNull: false,
             },
         })
     }
 
-    return Post
+    return JobPost
 }

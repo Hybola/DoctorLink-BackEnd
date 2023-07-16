@@ -1,11 +1,22 @@
 const express = require('express')
 const postController = require('../controllers/post-controller')
+const authenticate = require('../middlewares/authenticate')
+const doctorAuthenticate = require('../middlewares/doctor-authenticate')
+const providerAuthenticate = require('../middlewares/provider-authenticate')
 const router = express.Router()
-// const authDoctorMiddleware = require('../middlewares/doctor-authenticate')
 
-router.post('/createpost', postController.createpost)
-// router.get('/getallpost', postController.getallpost)
-// router.get('/getpost/:id', postController.getpostbyid)
+router.post('/createpost', authenticate, postController.createpost)
+router.get('/getallpost', postController.getAllPost)
+router.post('/filterjob', postController.filterJob)
+
+router.get(
+    '/user/provider/:providerId',
+    authenticate,
+    postController.getPostbyProviderId
+)
+
+router.get('/guest/:id', postController.getPostByIdForGuest)
+router.get('/user/:id/', authenticate, postController.getPostById)
 // router.delete('/delete', postController.deletepost)
 // router.put('/editpost', postController.editpost)
 
