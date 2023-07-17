@@ -254,7 +254,7 @@ const main = async () => {
             profileImage:
                 'https://img.freepik.com/free-vector/people-walking-sitting-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000',
             coverImage: 'https://study.com/cimages/videopreview/7hfyoyse54.jpg',
-            address: '539 ม.3',
+            address: '777 ม.7 ต.น้ำซึม อ.เมือง จ.อุทัยธานี',
             provinceId: null,
             googleMap: 'https://goo.gl/maps/nkSAbhnh6mArW8tG6',
             mobile: '0895674332',
@@ -273,7 +273,7 @@ const main = async () => {
                 'https://media.istockphoto.com/id/1344779917/vector/medical-center-hospital-building-vector-design.jpg?s=612x612&w=0&k=20&c=_sZByueZhEZbK2WjQz1jqXy1_Rr5jYkgiVBj-2ls44s=',
             coverImage:
                 'https://www.wfyi.org/files/wfyi/articles/original/pexels-pixabay-263402.jpg',
-            address: '762 ม.8',
+            address: '762 ม.8 ต.น้ำซึม อ.เมือง จ.อุทัยธานี',
             provinceId: null,
             googleMap: 'https://goo.gl/maps/RjpyR5uvw26nTzAF9',
             mobile: '08956743223',
@@ -291,11 +291,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@naeramithoss',
             phone: '0817518953',
-            startDate: '2023-06-23',
             provinceId: '2',
             jobType: 'FullTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 2, ///////
@@ -304,11 +305,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/yEkvvCJeyGTstZF79',
             line: '@naeramitHospital',
             phone: '0817518953',
-            startDate: '2023-06-26',
             provinceId: '2',
             jobType: 'FullTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 3, //////
@@ -317,12 +319,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@ascuw1',
             phone: '0817518953',
-            startDate: '2023-06-24 08:00:00',
-            endDate: '2023-06-28 17:00:00',
             provinceId: '1',
             jobType: 'PartTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 4, ///////
@@ -331,12 +333,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@naeramitHospital',
             phone: '023406499',
-            startDate: '2023-06-28',
-            endDate: '2023-06-28',
             provinceId: '1',
             jobType: 'FullTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 5, //////
@@ -345,12 +347,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@onemeoneyou',
             phone: '0911468044',
-            startDate: '2023-06-25 08:00:00',
-            endDate: '2023-06-28 17:00:00',
             provinceId: '1',
             jobType: 'PartTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 6, /////
@@ -359,12 +361,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@swfcs1',
             phone: '0818808105',
-            startDate: '2023-06-03 20:00:00',
-            endDate: '2023-06-04 06:00:00',
             provinceId: '1',
             jobType: 'PartTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-10 08:00:00',
+            updatedAt: '2023-07-10 08:00:00',
         },
         {
             id: 7, //////
@@ -373,12 +375,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@nuc',
             phone: '0877639747',
-            startDate: '2023-07-16 08:00:00',
-            endDate: '2023-07-22 20:00:00',
             provinceId: '2',
             jobType: 'PartTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-13 08:00:00',
+            updatedAt: '2023-07-13 08:00:00',
         },
         {
             id: 8, //////
@@ -387,11 +389,12 @@ const main = async () => {
             map: 'https://goo.gl/maps/mjW9k2hbVEWSvQj28',
             line: '@sukumtsu',
             phone: '0817518953',
-            startDate: '2023-06-23',
             provinceId: '2',
             jobType: 'FullTime',
             stage: 1,
             providerId: 1,
+            createdAt: '2023-07-13 08:00:00',
+            updatedAt: '2023-07-13 08:00:00',
         },
         {
             id: 9, ///////
@@ -401,10 +404,11 @@ const main = async () => {
             line: '@bangrak12',
             jobType: 'FullTime',
             phone: '0891234567',
-            startDate: '2023-06-23',
             stage: 1,
             providerId: 1,
             provinceId: '2',
+            createdAt: '2023-07-13 08:00:00',
+            updatedAt: '2023-07-13 08:00:00',
         },
         {
             id: 10, //////
@@ -414,8 +418,6 @@ const main = async () => {
             line: '@koyrewa',
             jobType: 'PartTime',
             phone: '0958895793',
-            startDate: '2023-07-04 09:00:00',
-            endDate: '2023-07-25 17:00:00',
             stage: 2,
             providerId: 2,
             provinceId: '4',
@@ -428,7 +430,6 @@ const main = async () => {
             line: '@swrvs45',
             jobType: 'FullTime',
             phone: '0812345678',
-            startDate: '2023-08-01',
             stage: 1,
             providerId: 1,
             provinceId: '3',
@@ -441,8 +442,6 @@ const main = async () => {
             line: '@Pizz27',
             jobType: 'PartTime',
             phone: '0869005210',
-            startDate: '2023-07-31',
-            endDate: '2023-07-31',
             stage: 1,
             providerId: 2,
             provinceId: '5',
@@ -455,7 +454,6 @@ const main = async () => {
             line: '@scnwyq',
             jobType: 'FullTime',
             phone: '0865432198',
-            startDate: '2023-08-01',
             stage: 2,
             providerId: 2,
             provinceId: '2',
@@ -468,8 +466,6 @@ const main = async () => {
             line: '@iurcn4dv',
             jobType: 'PartTime',
             phone: '0871982213',
-            startDate: '2023-07-05 07:30:00',
-            endDate: '2023-07-05 17:30:00',
             stage: 1,
             providerId: 1,
             provinceId: '10',
@@ -482,7 +478,6 @@ const main = async () => {
             line: '@phuket77',
             jobType: 'FullTime',
             phone: '0832190876',
-            startDate: '2023-09-01',
             stage: 1,
             providerId: 2,
             provinceId: '6',
@@ -495,8 +490,6 @@ const main = async () => {
             line: '@dcb987',
             jobType: 'PartTime',
             phone: '0892444325',
-            startDate: '2023-08-05 16:30:00',
-            endDate: '2023-08-05 19:30:00',
             stage: 1,
             providerId: 1,
             provinceId: '11',
@@ -509,7 +502,6 @@ const main = async () => {
             line: '@nonth09',
             jobType: 'FullTime',
             phone: '0821098765',
-            startDate: '2023-08-01',
             stage: 2,
             providerId: 2,
             provinceId: '12',
@@ -522,8 +514,6 @@ const main = async () => {
             line: '@non692',
             jobType: 'PartTime',
             phone: '0949549075',
-            startDate: '2023-07-05 09:00:00',
-            endDate: '2023-07-25 16:30:00',
             stage: 1,
             providerId: 1,
             provinceId: '7',
@@ -536,7 +526,6 @@ const main = async () => {
             line: '@charrt3',
             jobType: 'FullTime',
             phone: '0898360421',
-            startDate: '2023-08-01',
             stage: 1,
             providerId: 1,
             provinceId: '11',
@@ -549,7 +538,6 @@ const main = async () => {
             line: '@kk872d',
             jobType: 'FullTime',
             phone: '0922652856',
-            startDate: '2023-07-04',
             stage: 1,
             providerId: 2,
             provinceId: '8',
@@ -562,8 +550,6 @@ const main = async () => {
             line: '@on.on16',
             jobType: 'PartTime',
             phone: '0902124613',
-            startDate: '2023-08-24 10:30:00',
-            endDate: '2023-08-24 20:30:00',
             stage: 1,
             providerId: 2,
             provinceId: '8',
@@ -576,7 +562,6 @@ const main = async () => {
             line: '0882911750',
             jobType: 'FullTime',
             phone: '0830613006',
-            startDate: '2023-09-02',
             stage: 1,
             providerId: 1,
             provinceId: '4',
@@ -589,8 +574,6 @@ const main = async () => {
             line: '0871982213',
             jobType: 'FullTime',
             phone: '0871982213',
-            startDate: '2023-07-30',
-            endDate: '2023-07-30',
             stage: 1,
             providerId: 1,
             provinceId: '10',
@@ -613,7 +596,7 @@ const main = async () => {
             id: 2, /////
             jobDes: 'ประกาศรับสมัครแพทย์ GP fulltime ประจำคลินิกเวชกรรม \n- Rate 150,000-250,000 ++ บาท/เดือน รวมค่าใบประกอบวิชาชีพ **ไม่หักที่จ่าย** \n- ทำงาน 20-25 วัน/เดือน เวลา 09.00-21.00 น. \n- มีค่า DF ค่าหัตถการ, Hotel call, etc \n- มีค่า OT ชั่วโมงละ 500 บาท  \n- งานตรวจคนไข้โรคทั่วไป + trauma เล็กน้อย- สามารถสื่อสารภาษาอังกฤษกับชาวต่างชาติได้ดี \n- เหมาะสำหรับน้องๆที่อยากฝึกภาษา พัฒนาประสบการณ์ในการตรวจคนไข้ และหาประสบการณ์ใหม่ๆ',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-06-26',
+            startDate: '2023-08-26',
             salary: '150000',
             annual: '10',
             benefit: '- มี ที่พัก \n- ประกันสังคม',
@@ -624,7 +607,7 @@ const main = async () => {
             id: 3, //////
             jobDes: 'โรงพยาบาลพญาไท 3 รับสมัครแพทย์ Neuromed Full Time \nสามารถมาดู Case เร่งด่วน นอกเวลาได้ (โดยเฉพาะ Acute Stroke ที่ต้องให้ rtpa)\nถ้าสนใจ dementia จะพิจารณาเป็นพิเศษ\nติดต่อ สำนักงานแพทย์ โรงพยาบาลพญาไท 3 ชั้น 5(ใกล้สถานี BTS บางหว้า หรือ MRT บางไผ่)\nจันทร์-ศุกร์ เวลา 9.00-17.00 น.',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-06-23',
+            startDate: '2023-08-23',
             salary: '200000',
             annual: '10',
             benefit: 'ประกันสังคม',
@@ -635,7 +618,7 @@ const main = async () => {
             id: 4, //////
             jobDes: 'โรงพยาบาลนวเวช (ถ.รัชดา-รามอินทรา)\nต้องการรับสมัครแพทย์ Full Time\nสาขาอายุรกรรมทั่วไป Gen Med\nสาขาโรคระบบทางเดินอาหาร GI\nปฏิบัติงาน : 45 ชม./สัปดาห์\nค่าตอบแทน : การันตีรายเดือน (ตามข้อตกลง)',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-06-23',
+            startDate: '2023-08-23',
             salary: '200000',
             annual: '10',
             benefit: 'อาหาร, ค่ารักษาพยาบาล, สิทธิการลา',
@@ -646,7 +629,7 @@ const main = async () => {
             id: 5, ///////
             jobDes: 'โรงพยาบาลไทยนครินทร์จำกัด(มหาชน) 345 ถ.เทพรัตน(บางนา-ตราด กม.3.5 ใกล้เซนทรัลบางนา) แขวงบางนาเหนือ เขตบางนา กรุงเทพฯ 10260  \nรับสมัครแพทย์ดังนี้\n1. แพทย์เวชปฏิบัติทั่วไปประจำสหคลินิก(บ้านโพธิ์-ฉะเชิงเทรา)  \nจำนวน 2 อัตรา มีการันตี (เริ่มงาน กย.66)\n2. กุมารแพทย์ประจำสาขาทารกแรกเกิด มีการันตี \nติดต่อสอบถามสำนักอำนวยการแพทย์  \nโทร 023406499 ต่อ 3311  หรือส่งเอกสารประวัติการศึกษา/การทำงาน  ที่  Email doctor@thainakarin.co.th',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-06-23',
+            startDate: '2023-08-23',
             salary: '200000',
             annual: '10',
             benefit: 'ค่ารักษาพยาบาล, สิทธิการลา',
@@ -657,7 +640,7 @@ const main = async () => {
             id: 6, ///////
             jobDes: 'รับสมัครแพทย์สนใจร่วมงาน บริษัท เทเลเฮลท์ แคร์ จำกัด/nคุณสมบัติ/n- ได้รับคุณวุฒิแพทยศาสตรบัณฑิต\n- มีใบประกอบวิชาชีพเวชกรรม- มีความสนใจด้าน Telehealth- แพทย์ GP มีประสบการณ์ 3 ปี ขึ้นไป/nข้อมูลการทำงาน- ให้คำปรึกษาคำแนะนำตรวจรักษาเบื้องต้นกำหนดระดับการดูแลที่เหมาะสมตามหลักวิชาชีพ-ทำงานร่วมกับทีมสหวิชาชีพมีส่วนร่วมในการพัฒนาด้านการดูแลรักษาแนวทางปฏิบัติ และการแพทย์/nเวลาปปฏิบัติงาน- แพทย์ Full time ทำงาน 5 วัน / สัปดาห์ /nค่าตอบแทน120,000++ ตามประสบการณ์และความสามารถ',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-06-23',
+            startDate: '2023-08-23',
             salary: '120000',
             annual: '10',
             benefit:
@@ -717,7 +700,7 @@ const main = async () => {
             id: 11, ///
             jobDes: 'ด่วน...ต้องการแพทย์ประจำห้องพยาบาล \nพิกัด  ตำบลในเมือง  จ.ขอนแก่น  \nเวลาปฎิบัติงาน  \nทุกวันอังคารและวันพฤหัส  \nเวลา 09.00-15.00 น.    \nเริ่ม วันที่ 4 กรกฎาคม 2566\nสนใจติดต่อ  092-2652856 ก้อย',
             workingDay: 'จันทร์-ศุกร์',
-            startDate: '2023-07-04',
+            startDate: '2023-09-04',
             salary: '150000',
             annual: '10',
             benefit:
@@ -755,8 +738,8 @@ const main = async () => {
         {
             id: 1, //////
             jobDes: 'ต้องการรับสมัครแพทย์ Part Time\nสาขา อายุรกรรมโรคหัวใจ Cardio\nวัน-เวลาปฏิบัติงาน :ทุกวันจันทร์ เวลา 8.00-14.00 น.ทุกวันศุกร์ เวลา 17.00-20.00 น. ค่าตอบแทน : การันตีรายชั่วโมง 1,000 บาท',
-            startDate: '2023-06-24 08:00:00',
-            endDate: '2023-06-28 17:00:00',
+            startDate: '2023-08-24 08:00:00',
+            endDate: '2023-08-28 17:00:00',
             wage: '6000',
             other: 'ไม่มี',
             jobPostId: 3,
@@ -764,8 +747,8 @@ const main = async () => {
         {
             id: 2, //////
             jobDes: 'รับสมัครแพทย์ Part time \nมีประสบการณ์  Botox,Filler,ร้อยไหม,หัตถการฉีดอื่นๆ 1 ปี ขึ้นไป\n-มีใบประกอบวิชาชีพเวชกรรม \n-รายได้ตามตกลง ( ตามประสบการณ์)  \n-สามารถปฏิบัติงานได้  3-4 วัน/สัปดาห์  \nแพทย์ท่านใดมีความประสงค์ร่วมงาน ต้องการรายละเอียดเพิ่มเติมกรุณาติดต่อ แอดไลน์  ID line : onemeoneyou ( คุณยุ) หรือโทร 091-1468044 ขอบคุณค่ะ',
-            startDate: '2023-06-25 08:00:00',
-            endDate: '2023-06-28 17:00:00',
+            startDate: '2023-08-25 08:00:00',
+            endDate: '2023-08-28 17:00:00',
             wage: '36000',
             other: 'ไม่มี',
             jobPostId: 5,
@@ -773,8 +756,8 @@ const main = async () => {
         {
             id: 3, /////
             jobDes: '- รับแพทย์ Cardio เวรใน ช่วงเวลา 20.00-06.00 น. \nการันตี 750 บาทต่อชั่วโมง \nสนใจติดต่อ เลขาแพทย์ดาว\nโทร. 02-910-1600 ต่อ 1505\n{081-8808105}\nID Line : https://line.me/ti/p/LNjnUTx4_k',
-            startDate: '2023-06-03 20:00:00',
-            endDate: '2023-06-04 06:00:00',
+            startDate: '2023-08-03 20:00:00',
+            endDate: '2023-08-04 06:00:00',
             wage: '7500',
             other: 'ไม่มี',
             jobPostId: 6,
@@ -782,8 +765,8 @@ const main = async () => {
         {
             id: 4, /////
             jobDes: 'รับสมัครแพทย์ GP PART TIME ปฏิบัติงาน วันที่ 16, 22 กรกฎาคม 2566  \nรายละเอียดการปฏิบัติงาน\n- ปฏิบัติงานเวลา 08.00-20.00 น.  และ 20.00-08.00 น.\n- มีช่วงพักเบรค\n- ตรวจ OPD, ER สลับกับแพทย์อยู่เวรอีกท่าน\n- ค่าตอบแทน 1500 บาท/ชั่วโมง\n- เงินจะโอนเข้าบัญชี ทุกวันที่ 10 ของเดือนถัดไป\n- สวัสดิการ :  อาหาร และห้องพักแพทย์เวรในโรงพยาบาล \nสนใจติดต่อสอบถามเพิ่ม  \n087-763-9747 คุณพิม เลขาแพทย์\n083-032-6032 พญ.สุพรรณิการ์ (หมอเดียร์) รอง ผอ.แพทย์',
-            startDate: '2023-07-16 08:00:00',
-            endDate: '2023-07-22 20:00:00',
+            startDate: '2023-09-16 08:00:00',
+            endDate: '2023-09-22 20:00:00',
             wage: '36000',
             other: 'ไม่มี',
             jobPostId: 7,
@@ -791,8 +774,8 @@ const main = async () => {
         {
             id: 5, //////
             jobDes: 'ด่วน !!\nรับแพทย์ PT วันที่ 4 11  12  18 25 กรกฎาคมคม  2566\nเวลา 09.00-17.00 น.\nโอนเงิน หลังลงเวร\nโทร 095-8895793  \nไลน์ ID : koyrewa',
-            startDate: '2023-07-04 09:00:00',
-            endDate: '2023-07-25 17:00:00',
+            startDate: '2023-09-04 09:00:00',
+            endDate: '2023-09-25 17:00:00',
             wage: '40000',
             other: 'ไม่มี',
             jobPostId: 10,
@@ -800,8 +783,8 @@ const main = async () => {
         {
             id: 6, //////
             jobDes: 'รับสมัครแพทย์ PT \nวันที่8/7/2566\nเวลา 09.00 น. -12.00 น.\nค่าเวร 1500  \nหัก3%\nจ่ายสดหลังลงเวรค่ะ \nเอกสาร\n     -สำเนาบัตรประชาชน\n     -สำเนาใบประกอบวิชาชีพ\nสนใจติดต่อ  \nLine ID : Pizz27\nTel:086-900-5210',
-            startDate: '2023-07-08 09:00:00',
-            endDate: '2023-07-08 12:00:00',
+            startDate: '2023-09-08 09:00:00',
+            endDate: '2023-09-08 12:00:00',
             wage: '1500',
             other: 'ไม่มี',
             jobPostId: 12,
@@ -809,8 +792,8 @@ const main = async () => {
         {
             id: 7, /////
             jobDes: 'รับสมัครแพทย์ PT สหคลินิกสยามการแพทย์  อ.ปลวกแดง จ.ระยอง\nวันที่ 5,7,12,14,19,21,25 กรกฎาคม2566\n09.00 น. - 16.30 น.\nค่าเวร 3,500 บาท\nจ่ายสดหลังลงเวรค่ะ\nสนใจติดต่อ  \nLine ID : non692 \nTel:0949549075',
-            startDate: '2023-07-05 09:00:00',
-            endDate: '2023-07-25 16:30:00',
+            startDate: '2023-09-05 09:00:00',
+            endDate: '2023-09-25 16:30:00',
             wage: '24500',
             other: 'ไม่มี',
             jobPostId: 18,
@@ -818,8 +801,8 @@ const main = async () => {
         {
             id: 8, //////
             jobDes: 'รพ. วิชัยเวชฯ อ้อมน้อย  \nรับแพทย์ GP ออกตรวจ GP \nวันพุธที่ 5/7/66    \nเวลา 07.30 - 17.30 น.\nค่าตอบแทน  500/ชม.  ไม่หักเวลาพัก  \nมีมื้อเที่ยง +ห้องพักแพทย์ฟรี\nสนใจติดต่อ  0871982213  ',
-            startDate: '2023-07-05 07:30:00',
-            endDate: '2023-07-05 17:30:00',
+            startDate: '2023-09-05 07:30:00',
+            endDate: '2023-09-05 17:30:00',
             wage: '5000',
             other: 'ไม่มี',
             jobPostId: 14,
@@ -827,8 +810,8 @@ const main = async () => {
         {
             id: 9, /////
             jobDes: 'คลินิกมิตรภาพ บางวัว ฉะเชิงเทรา \n- แพทย์สูติ 1 อัตรา ค่าตอบแทน 800 บาท/ชั่วโมง  \nตกลงเวลาทำงานได้ สัปดาห์ละ 1-2 วัน\nเวลาทำงาน 16.30-19.30น. หรือตามแต่ตกลง  \nสนใจติดต่อ 089-244-4325',
-            startDate: '2023-08-05 16:30:00',
-            endDate: '2023-08-05 19:30:00',
+            startDate: '2023-09-05 16:30:00',
+            endDate: '2023-09-05 19:30:00',
             wage: '4800',
             other: 'ไม่มี',
             jobPostId: 16,
@@ -836,8 +819,8 @@ const main = async () => {
         {
             id: 10, /////
             jobDes: 'เวอร์ซาส คลินิก ขอนแก่น\nรับแพทย์ดำเนินการคลินิก\nแพทย์ติดเวลาราชการสามารถสอบถามได้นะคะ\nสกินอย่างเดียว\n800 /ชม df 7%\nสนใจสอบถาม\nโทร 0902124613\nLineID  on.on16 (โอเอ็นจุดโอเอ็น16)\nK.on',
-            startDate: '2023-08-24 10:30:00',
-            endDate: '2023-08-24 20:30:00',
+            startDate: '2023-09-24 10:30:00',
+            endDate: '2023-09-24 20:30:00',
             wage: '8000',
             other: 'ไม่มี',
             jobPostId: 21,
