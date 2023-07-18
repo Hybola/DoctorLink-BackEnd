@@ -25,7 +25,7 @@ const main = async () => {
             email: 'nfredson0@washingtonpost.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '357-218-6235',
+            mobile: '3572186235',
             profileImage:
                 'https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '293691460-4',
@@ -44,7 +44,7 @@ const main = async () => {
             email: 'mweekley1@usgs.gov',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '552-409-1129',
+            mobile: '5524091129',
             profileImage:
                 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '153227484-X',
@@ -63,7 +63,7 @@ const main = async () => {
             email: 'ostennard2@comcast.net',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '571-276-7017',
+            mobile: '5712767017',
             profileImage:
                 'https://images.unsplash.com/photo-1665686310934-8fab52b3821b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '014913857-1',
@@ -82,7 +82,7 @@ const main = async () => {
             email: 'jwhawell3@ning.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '960-305-2970',
+            mobile: '9603052970',
             profileImage:
                 'https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHdvbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '244831964-2',
@@ -101,7 +101,7 @@ const main = async () => {
             email: 'whealings4@issuu.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '847-633-0240',
+            mobile: '8476330240',
             profileImage:
                 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '504953124-1',
@@ -120,7 +120,7 @@ const main = async () => {
             email: 'ctoplis5@theglobeandmail.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '295-581-6039',
+            mobile: '2955816039',
             profileImage:
                 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHdvbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '030721495-8',
@@ -139,7 +139,7 @@ const main = async () => {
             email: 'csims6@buzzfeed.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '652-797-6214',
+            mobile: '6527976214',
             profileImage:
                 'https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '904843537-4',
@@ -158,7 +158,7 @@ const main = async () => {
             email: 'jauston7@fc2.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '953-539-9903',
+            mobile: '9535399903',
             profileImage:
                 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fHdvbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '896120297-9',
@@ -177,7 +177,7 @@ const main = async () => {
             email: 'aisgate8@surveymonkey.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '822-419-5337',
+            mobile: '8224195337',
             profileImage:
                 'https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '329714227-8',
@@ -196,7 +196,7 @@ const main = async () => {
             email: 'csodory9@nydailynews.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '649-408-5360',
+            mobile: '6494085360',
             profileImage:
                 'https://images.unsplash.com/photo-1590086782957-93c06ef21604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1hbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '496894048-3',
@@ -215,7 +215,7 @@ const main = async () => {
             email: 'naeramit.18@gmail.com',
             password:
                 '$2a$10$RiK0keiI63OCRsdFgvHcxuEh8HcpYHWznCnsT9sPtuur3YUv6EQBe',
-            mobile: '649-408-5360',
+            mobile: '6494085360',
             profileImage:
                 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1hbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60',
             licenceNumber: '496894048-7',
@@ -831,7 +831,19 @@ const main = async () => {
         { id: 1, status: 3, jobPostId: 1, doctorId: 1 },
         { id: 2, status: 1, jobPostId: 2, doctorId: 1 },
         { id: 3, status: 1, jobPostId: 1, doctorId: 2 },
-        { id: 4, status: 1, jobPostId: 2, doctorId: 2 },
+        { id: 4, status: 1, jobPostId: 2, doctorId: 3 },
+        { id: 5, status: 1, jobPostId: 3, doctorId: 4 },
+        { id: 6, status: 1, jobPostId: 3, doctorId: 5 },
+        { id: 7, status: 1, jobPostId: 4, doctorId: 5 },
+        { id: 8, status: 1, jobPostId: 5, doctorId: 6 },
+        { id: 9, status: 1, jobPostId: 4, doctorId: 5 },
+        { id: 10, status: 1, jobPostId: 6, doctorId: 6 },
+        { id: 11, status: 1, jobPostId: 7, doctorId: 5 },
+        { id: 12, status: 1, jobPostId: 8, doctorId: 6 },
+        { id: 13, status: 1, jobPostId: 9, doctorId: 5 },
+        { id: 14, status: 1, jobPostId: 10, doctorId: 6 },
+        { id: 15, status: 1, jobPostId: 12, doctorId: 5 },
+        { id: 16, status: 1, jobPostId: 13, doctorId: 6 },
     ])
 
     await Follow.bulkCreate([
