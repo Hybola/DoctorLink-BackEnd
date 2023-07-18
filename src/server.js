@@ -44,6 +44,7 @@ io.on('connection', (socket) => {
             .to(onlineProviders[data.providerId])
             .emit('acceptChat', { newRoom, doctor: data.doctor })
     })
+
     socket.on('providerJoinRoom', (newRoom) => {
         // console.log("providerJoinRoom===>",newRoom)// run as 1:1
         socket.join(newRoom)
@@ -58,8 +59,8 @@ io.on('connection', (socket) => {
         // }
         // console.log('Doctor sendsconversation===>>>', data.conversation) //{ message: "i'm a doctor", to: 'provider', from: 'doctor' }
         // console.log('room===>>>', data.room) // 1:1
-        if (chatRooms[data.room]?.length )
-         chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+        if (chatRooms[data.room]?.length)
+            chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
         else chatRooms[data.room] = [data.conversation]
 
         // console.log('ChatRooms[data.room] >>>', chatRooms[data.room])
@@ -73,16 +74,35 @@ io.on('connection', (socket) => {
     socket.on('providerSendMessage', (data) => {
         // console.log('providerSendMessage to room:', data.room)
         // console.log('with Conversation:', data.conversation)
-        if (chatRooms[data.room]?.length )
-        chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
-       else chatRooms[data.room] = [data.conversation]
+        if (chatRooms[data.room]?.length)
+            chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+        else chatRooms[data.room] = [data.conversation]
 
         socket
             .to(data.room)
             .emit('doctorGetMessage', { conversation: data.conversation })
     })
 
-  
+    socket.on('providerStartChat', (data) => {
+        const newRoom = `${data.doctorId}:${data.provider.id}`
+        socket.join(newRoom)
+        // if(!chatRooms[newRoom])
+        socket
+            .to(onlineDoctors[data.doctorId])
+            .emit('doctorAcceptChat', { newRoom, provider: data.provider })
+    })
+    socket.on('doctorJoinRoom', (newRoom) => {
+        socket.join(newRoom)
+    })
+    ////==== below coding isn't done
+    // socket.on('providerSendMessage', (data) => {
+    //     if (chatRooms[data.room]?.length)
+    //         chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+    //     else chatRooms[data.room] = [data.conversation]
+
+    // })
+    ///===== above code isn't done
+
     socket.on('disconnect', () => {
         console.log('before delete user', onlineProviders)
         if (socket.user.role == 'provider')
