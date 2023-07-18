@@ -95,9 +95,12 @@ io.on('connection', (socket) => {
         socket.join(newRoom)
     })
     ////==== below coding isn't done
-    socket.on('providerSendMessage', (data) => {
-        
-    })
+    // socket.on('providerSendMessage', (data) => {
+    //     if (chatRooms[data.room]?.length)
+    //         chatRooms[data.room] = [...chatRooms[data.room], data.conversation]
+    //     else chatRooms[data.room] = [data.conversation]
+
+    // })
     ///===== above code isn't done
 
     socket.on('disconnect', () => {
